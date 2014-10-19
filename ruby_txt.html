@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>ruby - RDoc Documentation</title>
+
+<link href="./fonts.css" rel="stylesheet">
+<link href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/navigation.js"></script>
+<script src="./js/search_index.js"></script>
+<script src="./js/search.js"></script>
+<script src="./js/searcher.js"></script>
+<script src="./js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+<div class="nav-section">
+  <h3>Table of Contents</h3>
+
+  <ul class="link-list" role="directory">
+    <li><a href="#label-1+-+Splat+operator+%28%22%2A%22%29">1 - Splat operator (“*”)</a>
+    <li><a href="#label-2+-+Double-bang+operator+%28%22%21%21%22%29">2 - Double-bang operator (“!!”)</a>
+    <li><a href="#label-3+-+Namespace+resolution+operator+%28%22%3A%3A%22%29">3 - Namespace resolution operator (“::”)</a>
+    <li><a href="#label-4+-+Method+syntax">4 - Method syntax</a>
+    <li><a href="#label-5+-+Method+argument+hash+key+syntactic+sugar">5 - Method argument hash key syntactic sugar</a>
+    <li><a href="#label-6+-+Symbol%23to_proc">6 - Symbol#to_proc</a>
+    <li><a href="#label-7+-+Send+method">7 - Send method</a>
+    <li><a href="#label-8+-+Variable+syntax">8 - Variable syntax</a>
+    <li><a href="#label-9+-+Require+vs+Include">9 - Require vs Include</a>
+    <li><a href="#label-10+-+Yield">10 - Yield</a>
+    <li><a href="#label-11+-+RDoc+of+installed+gems">11 - RDoc of installed gems</a>
+  </ul>
+</div>
+
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./ey_txt.html">ey</a>
+  
+    <li><a href="./git-cmds_txt.html">git-cmds</a>
+  
+    <li><a href="./mac-cmds_txt.html">mac-cmds</a>
+  
+    <li><a href="./psql_txt.html">psql</a>
+  
+    <li><a href="./rails-cmds_txt.html">rails-cmds</a>
+  
+    <li><a href="./rails_txt.html">rails</a>
+  
+    <li><a href="./ruby_txt.html">ruby</a>
+  
+    <li><a href="./spree-methods_txt.html">spree-methods</a>
+  
+    <li><a href="./sql_txt.html">sql</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page ruby.txt">
+
+<h1 id="label-1+-+Splat+operator+%28%22%2A%22%29">1 - Splat operator (“*”)<span><a href="#label-1+-+Splat+operator+%28%22%2A%22%29">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+
+<p>Entry in arg list “soaks up” list of args</p>
+
+<pre>http://www.catb.org/jargon/html/S/splat.html</pre>
+
+<p>CAN BE USED TO FIND LIST OF ARGS PASSED TO BLOCK:</p>
+
+<pre class="ruby"><span class="ruby-identifier">unknown_block</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">args</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">args</span>.<span class="ruby-identifier">count</span>
+  <span class="ruby-identifier">args</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">class</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>[CoffeeScript initially used the “*”VAR then changed to VAR“…” <a
+href="https://github.com/jashkenas/coffee-script/issues/45">github.com/jashkenas/coffee-script/issues/45</a>]</p>
+
+<h1 id="label-2+-+Double-bang+operator+%28%22%21%21%22%29">2 - Double-bang operator (“!!”)<span><a href="#label-2+-+Double-bang+operator+%28%22%21%21%22%29">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+
+<p>The “!” converts the value into a boolean and then negates it.</p>
+
+<pre>The extra &quot;!&quot; negates the negated boolean eg &quot;!! completed_at&quot; -&gt; &quot;if completed&quot;</pre>
+
+<h1 id="label-3+-+Namespace+resolution+operator+%28%22%3A%3A%22%29">3 - Namespace resolution operator (“::”)<span><a href="#label-3+-+Namespace+resolution+operator+%28%22%3A%3A%22%29">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+
+<pre class="ruby"><span class="ruby-keyword">module</span> <span class="ruby-constant">SomeModule</span>
+ <span class="ruby-keyword">module</span> <span class="ruby-constant">InnerModule</span>
+  <span class="ruby-keyword">class</span> <span class="ruby-constant">MyClass</span>
+   <span class="ruby-constant">CONSTANT</span> = <span class="ruby-value">4</span>
+  <span class="ruby-keyword">end</span>
+ <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-constant">SomeModule</span><span class="ruby-operator">::</span><span class="ruby-constant">InnerModule</span><span class="ruby-operator">::</span><span class="ruby-constant">MyClass</span><span class="ruby-operator">::</span><span class="ruby-constant">CONSTANT</span>
+</pre>
+
+<h1 id="label-4+-+Method+syntax">4 - Method syntax<span><a href="#label-4+-+Method+syntax">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+
+<pre class="ruby"><span class="ruby-comment"># = instance method (Is it?  Or is that just for routes?  Is it a &quot;.&quot;?)</span>
+<span class="ruby-operator">::</span> = <span class="ruby-keyword">class</span> <span class="ruby-identifier">method</span>
+</pre>
+
+<h1 id="label-5+-+Method+argument+hash+key+syntactic+sugar">5 - Method argument hash key syntactic sugar<span><a href="#label-5+-+Method+argument+hash+key+syntactic+sugar">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<ul><li>
+<p>method(a: 12, b: 13)</p>
+
+<p>same as</p>
+</li><li>
+<p>method(:a =&gt; 12, :b =&gt; 13)</p>
+
+<p>same as</p>
+</li><li>
+<p>method({:a =&gt; 12, :b =&gt; 13})</p>
+</li></ul>
+
+<h1 id="label-6+-+Symbol%23to_proc">6 - Symbol#to_proc<span><a href="#label-6+-+Symbol%23to_proc">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+
+<pre class="ruby"><span class="ruby-string">'bar(&amp;:foo)'</span> <span class="ruby-identifier">converted</span> <span class="ruby-identifier">to</span> <span class="ruby-string">'bar{|x| x.foo}'</span>
+<span class="ruby-constant">Impicit</span> <span class="ruby-keyword">class</span> <span class="ruby-identifier">cast</span> <span class="ruby-identifier">applies</span> <span class="ruby-constant">Symbol</span><span class="ruby-comment">#to_proc to :foo</span>
+</pre>
+
+<h1 id="label-7+-+Send+method">7 - Send method<span><a href="#label-7+-+Send+method">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+
+<p>Send a method message to an object</p>
+
+<pre class="ruby"><span class="ruby-constant">Like</span> <span class="ruby-identifier">passing</span> <span class="ruby-identifier">a</span> <span class="ruby-identifier">function</span> <span class="ruby-identifier">pointer</span> <span class="ruby-identifier">to</span> <span class="ruby-identifier">a</span> <span class="ruby-identifier">middleware</span> <span class="ruby-keyword">in</span> <span class="ruby-constant">C</span>
+<span class="ruby-string">'def method_missing'</span> <span class="ruby-identifier">can</span> <span class="ruby-identifier">be</span> <span class="ruby-identifier">used</span> <span class="ruby-identifier">to</span> <span class="ruby-identifier">perform</span> <span class="ruby-identifier">the</span> <span class="ruby-identifier">appropriate</span> <span class="ruby-identifier">action</span>
+</pre>
+
+<h1 id="label-8+-+Variable+syntax">8 - Variable syntax<span><a href="#label-8+-+Variable+syntax">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<ul><li>
+<p>Local  = lowercase letter or underscore name start (within block)</p>
+</li><li>
+<p>Global = $ (anywhere in program)</p>
+</li><li>
+<p>Instance = @ (instance of “self”)</p>
+</li><li>
+<p>Class    = @@ (all instances of class)</p>
+</li></ul>
+
+<h1 id="label-9+-+Require+vs+Include">9 - Require vs Include<span><a href="#label-9+-+Require+vs+Include">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+
+<p>Require when wanted methods are in another file (‘require_relative’ when in
+same directory)</p>
+
+<p>Include when extending classes with other modules (ie mix-ins) eg “include
+Checkout” in ‘spree/core/app/models/spree/order.rb’</p>
+
+<h1 id="label-10+-+Yield">10 - Yield<span><a href="#label-10+-+Yield">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+
+<p>Yields to the associated block of code (implicitly passed to the method)</p>
+
+<pre>'block_given?' prevents 'yield' giving an error on no block implicitly passed</pre>
+
+<h1 id="label-11+-+RDoc+of+installed+gems">11 - RDoc of installed gems<span><a href="#label-11+-+RDoc+of+installed+gems">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+
+<p>$ gem server;</p>
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.2.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

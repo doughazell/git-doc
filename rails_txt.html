@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>rails - RDoc Documentation</title>
+
+<link href="./fonts.css" rel="stylesheet">
+<link href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/navigation.js"></script>
+<script src="./js/search_index.js"></script>
+<script src="./js/search.js"></script>
+<script src="./js/searcher.js"></script>
+<script src="./js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+<div class="nav-section">
+  <h3>Table of Contents</h3>
+
+  <ul class="link-list" role="directory">
+    <li><a href="#label-Features+covered">Features covered</a>
+    <li><a href="#label-1+-+Run-time+changes">1 - Run-time changes</a>
+    <li><a href="#label-2+-+Rails+extension+of+Ruby+getter%2Fsetter+definition">2 - Rails extension of Ruby getter/setter definition</a>
+    <li><a href="#label-3+-+Crystalising+the+mental+model+generated...">3 - Crystalising the mental model generated…</a>
+    <li><a href="#label-4+-+Putting+ruby+in+coffeescript">4 - Putting ruby in coffeescript</a>
+    <li><a href="#label-5+-+Rails+Generators">5 - Rails Generators</a>
+    <li><a href="#label-6+-+Rails+Integration+testing">6 - Rails Integration testing</a>
+    <li><a href="#label-7+-+RSpec+requests">7 - RSpec requests</a>
+    <li><a href="#label-8+-+FactoryGirl+vs+Fixtures">8 - FactoryGirl vs Fixtures</a>
+    <li><a href="#label-9+-+Paperclip">9 - Paperclip</a>
+    <li><a href="#label-10+-+Get+previous+value+of+attribute+after+update">10 - Get previous value of attribute after update</a>
+    <li><a href="#label-11+-+Send+units+to+Integer">11 - Send units to Integer</a>
+  </ul>
+</div>
+
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./ey_txt.html">ey</a>
+  
+    <li><a href="./git-cmds_txt.html">git-cmds</a>
+  
+    <li><a href="./mac-cmds_txt.html">mac-cmds</a>
+  
+    <li><a href="./psql_txt.html">psql</a>
+  
+    <li><a href="./rails-cmds_txt.html">rails-cmds</a>
+  
+    <li><a href="./rails_txt.html">rails</a>
+  
+    <li><a href="./ruby_txt.html">ruby</a>
+  
+    <li><a href="./spree-methods_txt.html">spree-methods</a>
+  
+    <li><a href="./sql_txt.html">sql</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page rails.txt">
+
+<h1 id="label-Features+covered">Features covered<span><a href="#label-Features+covered">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<hr>
+<ul><li>
+<p>Generators</p>
+</li><li>
+<p>Engines - Spree (state_machine)</p>
+</li><li>
+<p>Rake tasks - Nokogiri</p>
+</li><li>
+<p>Assets + precompiling</p>
+</li><li>
+<p>Migrations</p>
+</li><li>
+<p>Deface (app/overrides) + Decorator</p>
+</li><li>
+<p>ActiveRecord associations</p>
+</li><li>
+<p>RSpec/Capybara + Rails Testing</p>
+</li><li>
+<p>FactoryGirl, FFaker</p>
+</li></ul>
+
+<h1 id="label-1+-+Run-time+changes">1 - Run-time changes<span><a href="#label-1+-+Run-time+changes">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+
+<p>Ruby allows monkey-patching using the ‘eval’ method</p>
+
+<pre>Spree has Deface to change Views at run-time
+Decorator is a design pattern to change things at run-time, it is used in Spree to change models</pre>
+
+<h1 id="label-2+-+Rails+extension+of+Ruby+getter%2Fsetter+definition">2 - Rails extension of Ruby getter/setter definition<span><a href="#label-2+-+Rails+extension+of+Ruby+getter%2Fsetter+definition">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+
+<p>Ruby = ‘attr_accessor’ for instances only</p>
+
+<pre class="ruby"><span class="ruby-constant">Rails</span> <span class="ruby-operator">+=</span> <span class="ruby-string">'cattr_accessor'</span> <span class="ruby-keyword">for</span> <span class="ruby-keyword">class</span> <span class="ruby-identifier">access</span>
+         <span class="ruby-string">'mattr_accessor'</span> <span class="ruby-keyword">for</span> <span class="ruby-keyword">module</span> <span class="ruby-identifier">access</span>
+
+<span class="ruby-identifier">http</span>:<span class="ruby-operator">/</span><span class="ruby-regexp">/stackoverflow.com/</span><span class="ruby-identifier">questions</span><span class="ruby-operator">/</span><span class="ruby-value">185573</span><span class="ruby-operator">/</span><span class="ruby-identifier">what</span><span class="ruby-operator">-</span><span class="ruby-identifier">is</span><span class="ruby-operator">-</span><span class="ruby-identifier">mattr</span><span class="ruby-operator">-</span><span class="ruby-identifier">accessor</span><span class="ruby-operator">-</span><span class="ruby-keyword">in</span><span class="ruby-operator">-</span><span class="ruby-identifier">a</span><span class="ruby-operator">-</span><span class="ruby-identifier">rails</span><span class="ruby-operator">-</span><span class="ruby-keyword">module</span>
+</pre>
+
+<h1 id="label-3+-+Crystalising+the+mental+model+generated...">3 - Crystalising the mental model generated…<span><a href="#label-3+-+Crystalising+the+mental+model+generated...">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+
+<pre>'ActionController.respond_to'
+  The passed block gets called with the 'responder' argument (that gets renamed to whatever, often 'format')
+  This arg then gets put into the Ruby Pipe, &quot;|...|&quot;, and is the function prototype of the hooked code, generated at run-time.
+
+http://apidock.com/rails/ActionController/MimeResponds/InstanceMethods/respond_to</pre>
+
+<h1 id="label-4+-+Putting+ruby+in+coffeescript">4 - Putting ruby in coffeescript<span><a href="#label-4+-+Putting+ruby+in+coffeescript">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+
+<p>Add ‘.erb’ onto filename extension</p>
+
+<p>Then put &lt;% debugger %&gt; tags in code</p>
+
+<h1 id="label-5+-+Rails+Generators">5 - Rails Generators<span><a href="#label-5+-+Rails+Generators">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+
+<p>“Since Rails 3.0, generators are built on top of Thor”</p>
+
+<pre>http://guides.rubyonrails.org/generators.html</pre>
+
+<p>“public task :name” allows private methods in parent accessed from child as
+commands</p>
+
+<pre>http://rdoc.info/github/erikhuda/thor/master/Thor/Base/ClassMethods#public_command-instance_method
+eg 'railties-4.0.2/lib/rails/generators/rails/app/app_generator.rb:163'</pre>
+
+<h1 id="label-6+-+Rails+Integration+testing">6 - Rails Integration testing<span><a href="#label-6+-+Rails+Integration+testing">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+
+<p>Rails automatically loads all fixtures from ‘test/fixtures’</p>
+
+<pre>Starts by deleting from DB table based on filename eg 'spree_ordersHIDE.yml' looks for table 'spree_ordersHIDE'</pre>
+
+<h1 id="label-7+-+RSpec+requests">7 - RSpec requests<span><a href="#label-7+-+RSpec+requests">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+
+<p>End-to-end request/response black box testing based on
+‘ActionDispatch::Integration::Runner’</p>
+
+<pre>https://github.com/rspec/rspec-rails</pre>
+
+<h1 id="label-8+-+FactoryGirl+vs+Fixtures">8 - FactoryGirl vs Fixtures<span><a href="#label-8+-+FactoryGirl+vs+Fixtures">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+
+<p>Higher level than fixtures, at the Rails object level</p>
+
+<pre>Similar to RSpec stubs</pre>
+
+<p>Abstract wrapper around Rails objects that focuses only on the feature of
+relevance</p>
+
+<pre>Test DB normalization (redundant info is moved into the factory)
+
+Can create unique values using sequences
+Includes Rails associations if necessary
+
+Create = DB object (default for 'Factory()')
+Build = Memory object</pre>
+
+<h1 id="label-9+-+Paperclip">9 - Paperclip<span><a href="#label-9+-+Paperclip">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+
+<p>Creates DB migration and updates Model using ‘has_attached_file’</p>
+
+<p>Resizes images using ‘ImageMagick’</p>
+
+<p>Can use validation methods in Controller</p>
+
+<p>Paperclips default path is ‘RAILS_ROOT/public/system’</p>
+
+<pre>Change by ':url' + ':path' options to 'has_attached_file' method
+Options changed in Spree admin-configuration-image settings</pre>
+
+<p>Spree:</p>
+
+<pre class="ruby"><span class="ruby-identifier">edit_admin_product_image</span> <span class="ruby-constant">GET</span> <span class="ruby-regexp">/admin/</span><span class="ruby-identifier">products</span><span class="ruby-operator">/</span>:<span class="ruby-identifier">product_id</span><span class="ruby-operator">/</span><span class="ruby-identifier">images</span><span class="ruby-operator">/</span>:<span class="ruby-identifier">id</span><span class="ruby-operator">/</span><span class="ruby-identifier">edit</span>(.:<span class="ruby-identifier">format</span>) <span class="ruby-identifier">spree</span><span class="ruby-operator">/</span><span class="ruby-identifier">admin</span><span class="ruby-operator">/</span><span class="ruby-identifier">images</span><span class="ruby-comment">#edit</span>
+  <span class="ruby-string">'backend/app/controllers/spree/admin/resource_controller.rb'</span>
+  <span class="ruby-string">'backend/app/views/spree/admin/images/edit.html.erb'</span>
+  <span class="ruby-string">'core/app/models/spree/image.rb'</span>
+
+<span class="ruby-identifier">psql</span>=<span class="ruby-comment"># select * from spree_assets where id=57;</span>
+<span class="ruby-identifier">matches</span> <span class="ruby-string">'RAILS_ROOT/public/spree/products/57'</span>
+<span class="ruby-constant">BUT</span> <span class="ruby-constant">FOR</span> <span class="ruby-constant">PRODUCT</span> <span class="ruby-constant">ID</span> <span class="ruby-value">59</span> <span class="ruby-identifier">ie</span> <span class="ruby-string">&quot;BURNT ORANGE&quot;</span><span class="ruby-operator">!</span>
+
+<span class="ruby-constant">WHAT</span><span class="ruby-string">'S THE MAPPING???  PRODUCT ID ALWAYS SEEMS TO BE 2 MORE THAN ASSET ID...que???
+$ rails c -e production
+  almond = Spree::Product.find_by_id(72)
+  almond.images[0].id
+   =&gt; 70
+
+spreeBSC_production=# select id from spree_products where name='</span><span class="ruby-constant">HONEY</span><span class="ruby-string">';
+  67
+spreeBSC_production=# select id from spree_variants where product_id=67 and is_master='</span><span class="ruby-identifier">t</span><span class="ruby-string">';
+  445
+spreeBSC_production=# select id,attachment_file_name from spree_assets where viewable_id=445;
+  65 | open-uri20140414-388-b7g4vp
+
+THEREFORE:
+
+HONEY (ID 67) uses image '</span><span class="ruby-constant">RAILS_ROOT</span><span class="ruby-operator">/</span><span class="ruby-identifier">public</span><span class="ruby-operator">/</span><span class="ruby-identifier">spree</span><span class="ruby-operator">/</span><span class="ruby-identifier">products</span><span class="ruby-operator">/</span><span class="ruby-value">65</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">the</span> <span class="ruby-identifier">production</span> <span class="ruby-constant">DB</span>
+</pre>
+
+<h1 id="label-10+-+Get+previous+value+of+attribute+after+update">10 - Get previous value of attribute after update<span><a href="#label-10+-+Get+previous+value+of+attribute+after+update">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+
+<p>Append “_was” to attribute name</p>
+
+<pre>Rails 2 - ActiveRecord::Dirty
+Rails 4 - ActiveModel::Dirty
+
+In Rails 3 the non-database functionality of Active Record is extracted out into Active Model.</pre>
+
+<h1 id="label-11+-+Send+units+to+Integer">11 - Send units to Integer<span><a href="#label-11+-+Send+units+to+Integer">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+
+<p>(See ‘ruby.txt’ for details about the ‘send’ method)</p>
+
+<p>Rails adds some extra time and date functionality to Ruby:</p>
+
+<pre class="ruby"><span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Duration</span>
+
+$ <span class="ruby-identifier">irb</span>
+  <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>.<span class="ruby-identifier">send</span>(<span class="ruby-string">&quot;minutes&quot;</span>)
+    <span class="ruby-identifier">undefined</span> <span class="ruby-identifier">method</span> <span class="ruby-string">'minutes'</span> <span class="ruby-keyword">for</span> <span class="ruby-value">1</span><span class="ruby-operator">:</span><span class="ruby-constant">Fixnum</span>
+$ <span class="ruby-identifier">rails</span> <span class="ruby-identifier">c</span>
+  <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>.<span class="ruby-identifier">send</span>(<span class="ruby-string">&quot;minutes&quot;</span>)
+   =<span class="ruby-operator">&gt;</span> <span class="ruby-value">60</span> <span class="ruby-identifier">seconds</span>
+</pre>
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.2.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
