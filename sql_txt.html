@@ -61,6 +61,7 @@
     <li><a href="#label-Date">Date</a>
     <li><a href="#label-Functions">Functions</a>
     <li><a href="#label-Join+table">Join table</a>
+    <li><a href="#label-Finding+missing+ID%27s+using+%27Left+Join%27">Finding missing ID’s using ‘Left Join’</a>
     <li><a href="#label-Use+list+from+a+Join+table">Use list from a Join table</a>
     <li><a href="#label-Wildcards">Wildcards</a>
     <li><a href="#label-Altering+rows">Altering rows</a>
@@ -115,6 +116,16 @@
 
 <p>select * from spree_line_items where order_id = (select id from
 spree_orders where number = ‘15748490’);</p>
+
+<h3 id="label-Finding+missing+ID%27s+using+%27Left+Join%27">Finding missing ID’s using ‘Left Join’<span><a href="#label-Finding+missing+ID%27s+using+%27Left+Join%27">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
+
+<p>Null values for T2 columns in every T1 row that fails the ON and WHERE
+boolean</p>
+
+<pre>SELECT r.id as 'r.id', r.id + 1 as FirstAvailableID, r1.id as 'r1.ID'
+FROM games r
+LEFT JOIN games r1 ON r1.id = r.id + 1
+WHERE r1.id IS NULL</pre>
 
 <h1 id="label-Use+list+from+a+Join+table">Use list from a Join table<span><a href="#label-Use+list+from+a+Join+table">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
 <ul><li>
