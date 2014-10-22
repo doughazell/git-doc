@@ -116,8 +116,14 @@
 
 <p>select * from spree_line_items where order_id = (select id from
 spree_orders where number = ‘15748490’);</p>
+<ul><li>
+<p>The join condition of an inner join can be written either in the WHERE
+clause or in the JOIN clause.</p>
+</li></ul>
 
 <h3 id="label-Finding+missing+ID%27s+using+%27Left+Join%27">Finding missing ID’s using ‘Left Join’<span><a href="#label-Finding+missing+ID%27s+using+%27Left+Join%27">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
+
+<p>‘Left Join’ is form of ‘Outer Join’</p>
 
 <p>Null values for T2 columns in every T1 row that fails the ON and WHERE
 boolean</p>
