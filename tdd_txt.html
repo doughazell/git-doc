@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>tdd - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+<div class="nav-section">
+  <h3>Table of Contents</h3>
+
+  <ul class="link-list" role="directory">
+    <li><a href="#label-1+-+Middle-out+TDD">1 - Middle-out TDD</a>
+    <li><a href="#label-2+-+RSpec+TDD-2FBDD">2 - RSpec TDD/BDD</a>
+    <li><a href="#label-3+-+Test+Doubles">3 - Test Doubles</a>
+  </ul>
+</div>
+
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./big-data_txt.html">big-data</a>
+  
+    <li><a href="./coffeescript_txt.html">coffeescript</a>
+  
+    <li><a href="./git-cmds_txt.html">git-cmds</a>
+  
+    <li><a href="./java_txt.html">java</a>
+  
+    <li><a href="./mac-cmds_txt.html">mac-cmds</a>
+  
+    <li><a href="./metaprogramming_txt.html">metaprogramming</a>
+  
+    <li><a href="./psql_txt.html">psql</a>
+  
+    <li><a href="./rails-cmds_txt.html">rails-cmds</a>
+  
+    <li><a href="./rails_txt.html">rails</a>
+  
+    <li><a href="./railscasts/railsCasts2013-14_txt.html">railsCasts2013-14</a>
+  
+    <li><a href="./railscasts/railsCasts2015_txt.html">railsCasts2015</a>
+  
+    <li><a href="./railscasts/railsCasts2016_txt.html">railsCasts2016</a>
+  
+    <li><a href="./rspec_txt.html">rspec</a>
+  
+    <li><a href="./ruby-fann_txt.html">ruby-fann</a>
+  
+    <li><a href="./ruby_txt.html">ruby</a>
+  
+    <li><a href="./spree-methods_txt.html">spree-methods</a>
+  
+    <li><a href="./sql_txt.html">sql</a>
+  
+    <li><a href="./static-website_txt.html">static-website</a>
+  
+    <li><a href="./tdd_txt.html">tdd</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page tdd.txt">
+
+<h1 id="label-1+-+Middle-out+TDD">1 - Middle-out TDD<span><a href="#label-1+-+Middle-out+TDD">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p><a
+href="http://david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html">david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html</a></p>
+
+<p>Not religiously sticking to developing the tests (ie unit tests) first</p>
+
+<p>Think about and start to formulate the system reqs + spec</p>
+
+<p>Create the crude system first and then incrementally add tests (at the
+appropriate level) and code</p>
+
+<h1 id="label-2+-+RSpec+TDD-2FBDD">2 - RSpec TDD/BDD<span><a href="#label-2+-+RSpec+TDD-2FBDD">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<pre class="ruby"><span class="ruby-identifier">https</span>:<span class="ruby-operator">/</span><span class="ruby-regexp">/relishapp.com/</span><span class="ruby-identifier">rspec</span><span class="ruby-operator">/</span><span class="ruby-identifier">rspec</span><span class="ruby-operator">-</span><span class="ruby-identifier">core</span><span class="ruby-operator">/</span><span class="ruby-identifier">docs</span>
+<span class="ruby-identifier">https</span>:<span class="ruby-operator">/</span><span class="ruby-regexp">/github.com/</span><span class="ruby-identifier">rspec</span><span class="ruby-operator">/</span><span class="ruby-identifier">rspec</span><span class="ruby-operator">-</span><span class="ruby-identifier">core</span>
+</pre>
+
+<p>Unit (&#39;models/*&#39;)</p>
+
+<pre class="ruby"><span class="ruby-constant">Classical</span> <span class="ruby-constant">TDD</span> (<span class="ruby-identifier">ie</span> <span class="ruby-identifier">use</span> <span class="ruby-identifier">real</span> <span class="ruby-identifier">objects</span> <span class="ruby-identifier">rather</span> <span class="ruby-identifier">than</span> <span class="ruby-identifier">doubles</span>)
+</pre>
+
+<p>Integration (&#39;controllers/*&#39;, &#39;requests/*&#39;)</p>
+
+<pre class="ruby"><span class="ruby-constant">Classical</span> <span class="ruby-constant">TDD</span>
+</pre>
+
+<p>Transition to BDD - Requests vs Features</p>
+
+<pre>Features higher, dumb user, level
+Requests at browser level but with some HTTP knowledge eg get, put, post, delete and expect HTTP response values</pre>
+
+<p>Acceptance (&#39;features/*&#39; + Capybara + FactoryGirl + Stub the
+current user)</p>
+
+<pre>BDD (evolution from Mockist TDD)
+
+FactoryGirl creates objects that are ruby&#39;ised fixtures
+Similar to RSpec stubs
+
+http://railscasts.com/episodes/158-factories-not-fixtures?view=asciicast
+https://github.com/thoughtbot/factory_girl</pre>
+
+<h1 id="label-3+-+Test+Doubles">3 - Test Doubles<span><a href="#label-3+-+Test+Doubles">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>rspec-mocks: Pure O-O languages like Ruby have a middleware built in that
+receives messages for method calls</p>
+
+<pre>Dynamically typed so determined at run-time by middleware
+Not like statically typed O-O langs (eg Java, C++) determined a compile-time 
+
+Can hook messages sent to objects as integration tests
+Can change methods in code to return specified value in response to a message</pre>
+
+<p>Mocks vs Stubs</p>
+
+<pre>http://martinfowler.com/articles/mocksArentStubs.html
+
+Mock is a smarter Stub, a test Double (others doubles: dummy, fake, stubs)
+Mocks set expectations (behaviour verification), Stubs just return a value (state verification)</pre>
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

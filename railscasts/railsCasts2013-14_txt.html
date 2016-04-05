@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>railsCasts2013-14 - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/darkfish.js"></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+<div class="nav-section">
+  <h3>Table of Contents</h3>
+
+  <ul class="link-list" role="directory">
+    <li><a href="#label-1+-+Custom+Rake+tasts+-2366">1 - Custom Rake tasts #66</a>
+    <li><a href="#label-2+-+Rails+3+Screencasts+-+ActionDispatch">2 - Rails 3 Screencasts - ActionDispatch</a>
+    <li><a href="#label-3+-+Factories+not+Fixtures+-23158">3 - Factories not Fixtures #158</a>
+    <li><a href="#label-4+-+What+is+new+in+Rails+4+-23400">4 - What is new in Rails 4 #400</a>
+    <li><a href="#label-Rails+4+has+support+for+native+datatypes+in+Postgres.">Rails 4 has support for native datatypes in Postgres.</a>
+    <li><a href="#label-ActiveRecord+features-3A">ActiveRecord features:</a>
+    <li><a href="#label-ActiveModel-3A-3AModel">ActiveModel::Model</a>
+    <li><a href="#label-Views">Views</a>
+    <li><a href="#label-Routes">Routes</a>
+    <li><a href="#label-Misc">Misc</a>
+    <li><a href="#label-5+-+Importing+CSV+and+Excel+-23396">5 - Importing CSV and Excel #396</a>
+    <li><a href="#label-form_tag">form_tag</a>
+    <li><a href="#label-Controller+action">Controller action</a>
+    <li><a href="#label-Importing+CSV+data">Importing CSV data</a>
+    <li><a href="#label-Modifying+Existing+Records">Modifying Existing Records</a>
+    <li><a href="#label-Importing+Excel+spreadsheets">Importing Excel spreadsheets</a>
+    <li><a href="#label-Validating+data+-+using+form_for+not+form_tag">Validating data - using form_for not form_tag</a>
+  </ul>
+</div>
+
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../big-data_txt.html">big-data</a>
+  
+    <li><a href="../coffeescript_txt.html">coffeescript</a>
+  
+    <li><a href="../git-cmds_txt.html">git-cmds</a>
+  
+    <li><a href="../java_txt.html">java</a>
+  
+    <li><a href="../mac-cmds_txt.html">mac-cmds</a>
+  
+    <li><a href="../metaprogramming_txt.html">metaprogramming</a>
+  
+    <li><a href="../psql_txt.html">psql</a>
+  
+    <li><a href="../rails-cmds_txt.html">rails-cmds</a>
+  
+    <li><a href="../rails_txt.html">rails</a>
+  
+    <li><a href="../railscasts/railsCasts2013-14_txt.html">railsCasts2013-14</a>
+  
+    <li><a href="../railscasts/railsCasts2015_txt.html">railsCasts2015</a>
+  
+    <li><a href="../railscasts/railsCasts2016_txt.html">railsCasts2016</a>
+  
+    <li><a href="../rspec_txt.html">rspec</a>
+  
+    <li><a href="../ruby-fann_txt.html">ruby-fann</a>
+  
+    <li><a href="../ruby_txt.html">ruby</a>
+  
+    <li><a href="../spree-methods_txt.html">spree-methods</a>
+  
+    <li><a href="../sql_txt.html">sql</a>
+  
+    <li><a href="../static-website_txt.html">static-website</a>
+  
+    <li><a href="../tdd_txt.html">tdd</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page railscasts/railsCasts2013-14.txt">
+
+<h1 id="label-1+-+Custom+Rake+tasts+-2366">1 - Custom Rake tasts #66<span><a href="#label-1+-+Custom+Rake+tasts+-2366">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>(1/4/13)</p>
+
+<p>Task dependency syntax is &#39;=&gt;&#39; in task definition line</p>
+
+<pre>Requires and runs dependent task before running current task.
+&#39;[]&#39;, ie array, can be used to supply multiple dependencies</pre>
+
+<h1 id="label-2+-+Rails+3+Screencasts+-+ActionDispatch">2 - Rails 3 Screencasts - ActionDispatch<span><a href="#label-2+-+Rails+3+Screencasts+-+ActionDispatch">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>(11/4/13)</p>
+
+<p>Refactor of ActionController stack</p>
+
+<pre class="ruby"><span class="ruby-identifier">http</span>
+<span class="ruby-identifier">middleware</span>
+<span class="ruby-identifier">routing</span>
+</pre>
+
+<p>Nicer syntax for routing cfg</p>
+
+<pre>&#39;session#new&#39; = &#39;session&#39; controller and &#39;new&#39; action
+Redirects available direct from routing cfg file
+Access Rack direct from routing cfg file</pre>
+
+<h1 id="label-3+-+Factories+not+Fixtures+-23158">3 - Factories not Fixtures #158<span><a href="#label-3+-+Factories+not+Fixtures+-23158">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>(10/5/14)</p>
+
+<p>Make RSpec aware of Factory by  adding a &#39;require&#39; line to
+&#39;/spec/spec_helper.rb&#39;</p>
+
+<p>Factories are an excellent way to improve the tests in your Rails
+application</p>
+
+<h1 id="label-4+-+What+is+new+in+Rails+4+-23400">4 - What is new in Rails 4 #400<span><a href="#label-4+-+What+is+new+in+Rails+4+-23400">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>(11/11/14)</p>
+
+<h3 id="label-Rails+4+has+support+for+native+datatypes+in+Postgres.">Rails 4 has support for native datatypes in Postgres.<span><a href="#label-Rails+4+has+support+for+native+datatypes+in+Postgres.">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<pre>$ rails g scaffold article name content:text published_on:date tags properties:hstore
+
+Then alter migration:
+
+* Add &#39;execute &quot;create extension hstore&quot;&#39;.
+* Add the &#39;array&#39; option to the &#39;:tags&#39; column and setting it to &#39;true&#39;:
+  ...
+  &quot;t.string :tags, array: true&quot;
+  ...</pre>
+
+<p>When creating a new Article, we can pass in a Ruby array for &#39;tags&#39;
+which will be converted to a Postgres array.</p>
+
+<p>While for the &#39;properties&#39; we can pass in a hash.</p>
+
+<pre>&gt;&gt; Article.create! name:&quot;Hello&quot;, tags: %w[ruby rails], properties: {author:&quot;Eifion&quot;}</pre>
+
+<p>We could do something similar by serializing a text column but this
+approach allows us to interact with these columns,  in a much more
+efficient way!</p>
+
+<h3 id="label-ActiveRecord+features-3A">ActiveRecord features:<span><a href="#label-ActiveRecord+features-3A">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>&#39;all&#39;</p>
+
+<p>Now returns ActiveRecord relation instead of an array.</p>
+
+<p>Lazily-loaded so only triggers database query when necessary</p>
+</li><li>
+<p>&#39;load&#39;</p>
+
+<p>Returns ActiveRecord relations but triggers query (for eg caching
+behaviour)</p>
+</li><li>
+<p>&#39;not&#39;</p>
+
+<p>We can not call &#39;not&#39; on the &#39;where&#39; scope to invert it</p>
+
+<pre>&gt;&gt; Article.where.not(name: &quot;Hello&quot;)
+Article Load (107.6ms)  SELECT &quot;articles&quot;.* FROM &quot;articles&quot; WHERE (&quot;articles&quot;.&quot;name&quot; != &#39;Hello&#39;)</pre>
+</li><li>
+<p>&#39;find_by&#39;</p>
+
+<p>We’ve always been able to use dynamic finders, such as
+&#39;find_by_name&#39;, but these rely on method_missing and isn’t very
+clean. Rails 4 introduces a find_by method that we can pass a hash to, like
+this:</p>
+
+<pre>&gt;&gt; Article.find_by name: &quot;Hello&quot;</pre>
+
+<p>There are also new &#39;find_or_create_by&#39; and
+&#39;find_or_inititalize_by&#39; methods and you’re encouraged to use these
+instead of the other ones.</p>
+</li><li>
+<p>&#39;scope&#39;</p>
+
+<p>Needs to pass in a callable object as a second object eg lambda</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">Article</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>
+  <span class="ruby-identifier">scope</span> :<span class="ruby-identifier">sorted</span>, <span class="ruby-operator">-</span><span class="ruby-operator">&gt;</span> { <span class="ruby-identifier">order</span>(:<span class="ruby-identifier">name</span>) }
+<span class="ruby-keyword">end</span>
+</pre>
+</li></ul>
+
+<h3 id="label-ActiveModel-3A-3AModel">ActiveModel::Model<span><a href="#label-ActiveModel-3A-3AModel">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Acts like ActiveModel object but not persisted to DB</p>
+</li><li>
+<p>Include ActiveModel::Model in the class + create &#39;attr_accessors&#39;
+then can interact with it like an ActiveRecord model</p>
+
+<pre>&gt;&gt; class Message
+&gt;&gt; include ActiveModel::Model
+&gt;&gt; attr_accessor :name, :content
+&gt;&gt; end
+=&gt; nil
+
+&gt;&gt; m = Message.new(name: &quot;foo&quot;)
+=&gt; #&lt;Message:0x007ff5dca1e760 @name=&quot;foo&quot;&gt;
+&gt;&gt; m.name
+=&gt; &quot;foo&quot;</pre>
+</li></ul>
+
+<p>It’s especially great if you want to pass a custom class into a
+&#39;form_for&#39; call.</p>
+
+<h3 id="label-Views">Views<span><a href="#label-Views">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Helper methods to generate form fields for associations</p>
+
+<p>&#39;collection_select&#39;</p>
+
+<p>&#39;collection_radio_buttons&#39;</p>
+
+<p>&#39;collection_check_boxes&#39;</p>
+
+<pre>Generating list of checkboxes useful for many-to-many associations or on array attribute.
+We pass in the attribute’s name, a collection of values, and a name and id.
+
+&lt;div class=&quot;field&quot;&gt;
+  &lt;%= f.collection_check_boxes :tags, %w[ruby rails design], :to_s, :to_s %&gt;
+&lt;/div&gt;</pre>
+</li><li>
+<p>HTML 5 helper methods eg &#39;date_select&#39; changed to &#39;date&#39;</p>
+
+<p>Browser then handles how it&#39;s displayed</p>
+</li><li>
+<p>Template handlers</p>
+
+<p>Rename &#39;edit.html.erb&#39; to &#39;edit.html.ruby&#39;.</p>
+
+<p>Uses plain Ruby code so useful for JSON formats (not rendering HTML).</p>
+</li><li>
+<p>Cache digest (called &#39;Russian doll caching&#39;)</p>
+</li></ul>
+
+<h3 id="label-Routes">Routes<span><a href="#label-Routes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Addition of &#39;concerns&#39; help reduce duplication in the routes</p>
+
+<p>Rails 3 &#39;/config/routes.rb&#39;</p>
+
+<pre class="ruby"><span class="ruby-identifier">resources</span> :<span class="ruby-identifier">articles</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">resources</span> :<span class="ruby-identifier">comments</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">resources</span> :<span class="ruby-identifier">photos</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">resources</span> :<span class="ruby-identifier">comments</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>Rails 4 &#39;/config/routes.rb&#39;</p>
+
+<pre class="ruby"><span class="ruby-identifier">concern</span> :<span class="ruby-identifier">commentable</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">resources</span> :<span class="ruby-identifier">comments</span>    
+<span class="ruby-keyword">end</span>
+<span class="ruby-identifier">resources</span> :<span class="ruby-identifier">articles</span>, <span class="ruby-identifier">concerns</span><span class="ruby-operator">:</span> :<span class="ruby-identifier">commentable</span>
+<span class="ruby-identifier">resources</span> :<span class="ruby-identifier">photos</span>, <span class="ruby-identifier">concerns</span><span class="ruby-operator">:</span> :<span class="ruby-identifier">commentable</span>
+</pre>
+
+<p>This can be really useful if we have a complicated route set with a lot of
+APIs with duplication between them.</p>
+
+<p>For simpler examples such as this it may be better to stick with using
+rested resources, however.</p>
+</li><li>
+<p>&#39;match&#39; method no longer supported</p>
+
+<p>Therefore specify exactly type of request accepted so no wildcard matches</p>
+
+<p>Now use &#39;get&#39; or &#39;post&#39; methods (or newly supported
+&#39;patch&#39;)</p>
+</li><li>
+<p>Route constraints automatically turned into default attributes when we
+generate the URL</p>
+
+<p>&#39;/config/routes.rb&#39;:</p>
+
+<pre class="ruby"><span class="ruby-identifier">get</span> <span class="ruby-string">&#39;foo&#39;</span>, <span class="ruby-identifier">to</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;articles#index&#39;</span>, <span class="ruby-identifier">constraints</span><span class="ruby-operator">:</span> {<span class="ruby-identifier">protocol</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;https&quot;</span>, <span class="ruby-identifier">subdomain</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;test&quot;</span>}
+</pre>
+
+<p>Before, if we called foo_url in our application these restraints wouldn’t
+be included, but now they are.</p>
+
+<pre>&gt;&gt; app.foo_url
+=&gt; &quot;https://test.example.com/foo&quot;</pre>
+</li></ul>
+
+<h3 id="label-Misc">Misc<span><a href="#label-Misc">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Can pass in a call to &#39;console&#39; with a block in app config&#39;s
+file.  Contents evaluated when load Rails env through console.</p>
+
+<pre class="ruby"><span class="ruby-identifier">console</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">require</span> <span class="ruby-string">&#39;pry&#39;</span>
+  <span class="ruby-identifier">config</span>.<span class="ruby-identifier">console</span> = <span class="ruby-constant">Pry</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>Need to add &#39;Pry&#39; to gemfile.</p>
+</li><li>
+<p>Eager-load entire Rails app in production</p>
+
+<p>Makes it thread-safe (previously enabled using an option
+&#39;threadsafe!&#39;)</p>
+
+<pre>&#39;/config/environments/production.rb&#39;:
+config.eager_load = true</pre>
+</li><li>
+<p>Can get routing info in development from the &#39;/rails/info&#39; path</p>
+</li></ul>
+
+<h1 id="label-5+-+Importing+CSV+and+Excel+-23396">5 - Importing CSV and Excel #396<span><a href="#label-5+-+Importing+CSV+and+Excel+-23396">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>(1/12/14)</p>
+
+<h3 id="label-form_tag">form_tag<span><a href="#label-form_tag">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Use &#39;form_tag&#39; instead of &#39;form_for&#39; since don&#39;t have
+object to handle importing yet</p>
+
+<p>Form submitted to a new &#39;import&#39; action on the
+&#39;ProductsController&#39; (set by &#39;routes&#39; file addition)</p>
+
+<p>Set &#39;multipart&#39; option so that form can handle file uploads</p>
+
+<pre>/app/views/products/index.html.erb
+
+&lt;h2&gt;Import Products&lt;/h2&gt;
+&lt;%= form_tag import_products_path, multipart: true do %&gt;
+  &lt;%= file_field_tag :file %&gt;
+  &lt;%= submit_tag &quot;Import&quot; %&gt;
+&lt;% end %&gt;</pre>
+
+<h3 id="label-Controller+action">Controller action<span><a href="#label-Controller+action">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>ProductsController::import</p>
+<ul><li>
+<p>Rails stores the uploaded file in the file system while its processed (not
+CarrierWave or Paperclip gems)</p>
+</li><li>
+<p>Pass uploaded file to a new import method on the Product model</p>
+
+<pre>/app/controllers/products_controller.rb
+
+def import
+  Product.import(params[:file])
+  redirect_to root_url, notice: &quot;Products imported.&quot;
+end</pre>
+</li><li>
+<p>Create route for new path</p>
+
+<pre>/config/routes.rb
+
+Store::Application.routes.draw do
+  resources :products do
+    collection { post :import }
+  end
+  root to: &#39;products#index&#39;
+end</pre>
+</li></ul>
+
+<h3 id="label-Importing+CSV+data">Importing CSV data<span><a href="#label-Importing+CSV+data">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>App config file contains “ require &#39;csv&#39; ” so can use Ruby&#39;s
+built-in CSV library</p>
+
+<pre>/app/models/product.rb
+
+def self.import(file)
+  CSV.foreach(file.path, headers: true) do |row|
+    Product.create! row.to_hash
+  end
+end</pre>
+
+<p>This will yield to the block for each line of data that’s found.</p>
+
+<p>&#39;headers&#39; option means the first line of data will be expected to
+hold each column’s name which will be used to name the data.</p>
+
+<p>Product created by passing &#39;row.to_hash&#39;</p>
+
+<pre>As long as the column names map to attributes in Product a new record will be created for each row</pre>
+
+<h3 id="label-Modifying+Existing+Records">Modifying Existing Records<span><a href="#label-Modifying+Existing+Records">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>If we had &#39;id&#39; column in CSV data then could update existing
+records (rather than just adding new ones)</p>
+
+<p>Then use &#39;find_by_id&#39; and only update certain attributes (listed by
+model&#39;s &#39;attr_accessible&#39; list)</p>
+
+<pre>/app/models/product.rb
+
+def self.import(file)
+  CSV.foreach(file.path, headers: true) do |row|
+    product = find_by_id(row[&quot;id&quot;]) || new
+    product.attributes = row.to_hash.slice(*accessible_attributes)
+    product.save!
+  end
+end
+
+Before &#39;products.csv&#39;:
+
+  name,price,released_on
+  Christmas Music Album,12.99,2012-12-06
+  Unicorn Action Figure,5.85,2012-12-06
+
+Downloaded existing products:
+
+  id,name,released_on,price,created_at,updated_at
+  6,Christmas Music Album,2012-12-06,12.99,2012-12-29 20:55:29 UTC,2012-12-29 20:55:29 UTC
+  7,Unicorn Action Figure,2012-12-06,5.85,2012-12-29 20:55:29 UTC,2012-12-29 20:55:29 UTC
+  ...</pre>
+
+<h3 id="label-Importing+Excel+spreadsheets">Importing Excel spreadsheets<span><a href="#label-Importing+Excel+spreadsheets">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Roo gem (other gems are available…)</p>
+
+<pre>/Gemfile
+gem &#39;roo&#39;
+
+/config/application.rb
+require &#39;iconv&#39;</pre>
+
+<p>Need header columns as keys to hash so get array of headers + array of
+current row + call &#39;transpose&#39; to alter rows &amp; cols.</p>
+
+<pre>Altered: /app/models/product.rb
+
+def self.import(file)
+  spreadsheet = open_spreadsheet(file)
+  header = spreadsheet.row(1)
+  (2..spreadsheet.last_row).each do |i|
+    row = Hash[[header, spreadsheet.row(i)].transpose]
+    product = find_by_id(row[&quot;id&quot;]) || new
+    product.attributes = row.to_hash.slice(*accessible_attributes)
+    product.save!
+  end
+end
+
+&#39;original_filename&#39; used on the uploaded file because it’s stored in a temporary file which doesn’t have an extension.
+3rd option tells Roo not to raise an exception if the file name doesn&#39;t match the type.
+
+def self.open_spreadsheet(file)
+  case File.extname(file.original_filename)
+  when &#39;.csv&#39; then Roo::Csv.new(file.path, nil, :ignore)
+  when &#39;.xls&#39; then Roo::Excel.new(file.path, nil, :ignore)
+  when &#39;.xlsx&#39; then Roo::Excelx.new(file.path, nil, :ignore)
+  else raise &quot;Unknown file type: #{file.original_filename}&quot;
+  end
+end
+
+(One issue with this solution is an exception is raised when we try to import files exported from our app, not Excel.)</pre>
+
+<h3 id="label-Validating+data+-+using+form_for+not+form_tag">Validating data - using form_for not form_tag<span><a href="#label-Validating+data+-+using+form_for+not+form_tag">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Use &#39;form_for&#39; so that we can easily display any validation errors
+just like we would with any other model.</p>
+
+<p>This model isn’t stored in the database, however, it’s a simple Ruby class.</p>
+
+<p>We use ActiveModel here to simulate ActiveRecord.</p>
+
+<p>See <a
+href="https://github.com/railscasts/396-importing-csv-and-excel/tree/master/store-with-validations">github.com/railscasts/396-importing-csv-and-excel/tree/master/store-with-validations</a></p>
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

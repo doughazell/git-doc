@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>ruby-fann - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+<div class="nav-section">
+  <h3>Table of Contents</h3>
+
+  <ul class="link-list" role="directory">
+    <li><a href="#label-1+-+Interface+to+FANN">1 - Interface to FANN</a>
+    <li><a href="#label-2+-+Reinforcement+learning">2 - Reinforcement learning</a>
+  </ul>
+</div>
+
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./big-data_txt.html">big-data</a>
+  
+    <li><a href="./coffeescript_txt.html">coffeescript</a>
+  
+    <li><a href="./git-cmds_txt.html">git-cmds</a>
+  
+    <li><a href="./java_txt.html">java</a>
+  
+    <li><a href="./mac-cmds_txt.html">mac-cmds</a>
+  
+    <li><a href="./metaprogramming_txt.html">metaprogramming</a>
+  
+    <li><a href="./psql_txt.html">psql</a>
+  
+    <li><a href="./rails-cmds_txt.html">rails-cmds</a>
+  
+    <li><a href="./rails_txt.html">rails</a>
+  
+    <li><a href="./railscasts/railsCasts2013-14_txt.html">railsCasts2013-14</a>
+  
+    <li><a href="./railscasts/railsCasts2015_txt.html">railsCasts2015</a>
+  
+    <li><a href="./railscasts/railsCasts2016_txt.html">railsCasts2016</a>
+  
+    <li><a href="./rspec_txt.html">rspec</a>
+  
+    <li><a href="./ruby-fann_txt.html">ruby-fann</a>
+  
+    <li><a href="./ruby_txt.html">ruby</a>
+  
+    <li><a href="./spree-methods_txt.html">spree-methods</a>
+  
+    <li><a href="./sql_txt.html">sql</a>
+  
+    <li><a href="./static-website_txt.html">static-website</a>
+  
+    <li><a href="./tdd_txt.html">tdd</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page ruby-fann.txt">
+
+<h1 id="label-1+-+Interface+to+FANN">1 - Interface to FANN<span><a href="#label-1+-+Interface+to+FANN">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<pre>$ cd src/tictactoe ; pushd `bundle list ruby-fann`
+$ cd ext/ruby_fann</pre>
+
+<p>Pick up changes to FANN from ruby-fann</p>
+
+<pre>$ make clean ; make</pre>
+
+<p>Training Artificial Neural Network (ANN)</p>
+
+<pre>ruby_fann.c::Init_ruby_fann()
+  Provides the ruby wrapper around the C fann lib
+
+fann_train_data.c::fann_train_on_data()
+  fann_train_epoch()
+    fann_train_epoch_irpropm()
+
+      Cycles through each training sample
+
+      fann_train.c::fann_compute_MSE()
+        Calc diff of output neurons from expected output given in trg sample</pre>
+
+<h1 id="label-2+-+Reinforcement+learning">2 - Reinforcement learning<span><a href="#label-2+-+Reinforcement+learning">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>Software agents taking actions in an environment so as to maximise some
+notion of cumulative reward</p>
+
+<p>In economics and game theory, reinforcement learning may be used to explain
+how equilibrium may arise under bounded rationality</p>
+
+<p>Typically formulated as a Markov decision process (MDP)</p>
+
+<pre>Mathematical framework for modeling decision making in situations where outcomes are partly random and 
+partly under the control of the decision maker
+
+MDP is a discrete time stochastic control process
+  At each time step the process is in some state &quot;s&quot; and the decision maker may choose any action &quot;a&quot; that is 
+  available in state &quot;s&quot;
+
+  The process responds at the next time step by randomly moving into a new state &quot;s&#39;&quot; and giving the decision 
+  maker a corresponding reward R.a(s,s&#39;)
+
+  Given &quot;s&quot; and &quot;a&quot;, the process is conditionally independent of all previous states and actions
+
+  Extension of Markov chains so if only 1 action exists and all rewards are the same (ie zero) then MDP reduces 
+  to Markov chain
+
+$ cd ~/Documents/ann ; wget -r -np -k https://webdocs.cs.ualberta.ca/~sutton/book/ebook/
+  -r = recursive
+  -np = don&#39;t follow links to parent directories
+  -k = make links in downloaded HTML/CSS point to local files</pre>
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
