@@ -6,19 +6,16 @@
 
 <title>spree-methods - RDoc Documentation</title>
 
-<link href="./fonts.css" rel="stylesheet">
-<link href="./rdoc.css" rel="stylesheet">
-
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
 </script>
 
 <script src="./js/jquery.js"></script>
-<script src="./js/navigation.js"></script>
-<script src="./js/search_index.js"></script>
-<script src="./js/search.js"></script>
-<script src="./js/searcher.js"></script>
 <script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
 
 
 <body id="top" role="document" class="file">
@@ -54,6 +51,16 @@
   </div>
 
   
+<div class="nav-section">
+  <h3>Table of Contents</h3>
+
+  <ul class="link-list" role="directory">
+    <li><a href="#label-Review+of+dynamic+pricing+eCommerce+site+built+with+Spree">Review of dynamic pricing eCommerce site built with Spree</a>
+    <li><a href="#label-Spree+rake+tasks">Spree rake tasks</a>
+    <li><a href="#label-Spree+methods">Spree methods</a>
+  </ul>
+</div>
+
 
   <div id="project-metadata">
     <div id="fileindex-section" class="nav-section">
@@ -61,15 +68,33 @@
 
   <ul class="link-list">
   
+    <li><a href="./big-data_txt.html">big-data</a>
+  
+    <li><a href="./coffeescript_txt.html">coffeescript</a>
+  
     <li><a href="./git-cmds_txt.html">git-cmds</a>
   
+    <li><a href="./java_txt.html">java</a>
+  
     <li><a href="./mac-cmds_txt.html">mac-cmds</a>
+  
+    <li><a href="./metaprogramming_txt.html">metaprogramming</a>
   
     <li><a href="./psql_txt.html">psql</a>
   
     <li><a href="./rails-cmds_txt.html">rails-cmds</a>
   
     <li><a href="./rails_txt.html">rails</a>
+  
+    <li><a href="./railscasts/railsCasts2013-14_txt.html">railsCasts2013-14</a>
+  
+    <li><a href="./railscasts/railsCasts2015_txt.html">railsCasts2015</a>
+  
+    <li><a href="./railscasts/railsCasts2016_txt.html">railsCasts2016</a>
+  
+    <li><a href="./rspec_txt.html">rspec</a>
+  
+    <li><a href="./ruby-fann_txt.html">ruby-fann</a>
   
     <li><a href="./ruby_txt.html">ruby</a>
   
@@ -79,6 +104,8 @@
   
     <li><a href="./static-website_txt.html">static-website</a>
   
+    <li><a href="./tdd_txt.html">tdd</a>
+  
   </ul>
 </div>
 
@@ -87,15 +114,29 @@
 
 <main role="main" aria-label="Page spree-methods.txt">
 
+<h3 id="label-Review+of+dynamic+pricing+eCommerce+site+built+with+Spree">Review of dynamic pricing eCommerce site built with Spree<span><a href="#label-Review+of+dynamic+pricing+eCommerce+site+built+with+Spree">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p><a
+href="https://www.youtube.com/watch?v=kwTuQ4ruEnc">www.youtube.com/watch?v=kwTuQ4ruEnc</a></p>
+
+<h2 id="label-Spree+rake+tasks">Spree rake tasks<span><a href="#label-Spree+rake+tasks">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>rake <a href="'spree/shared/_main_nav_bar'">deface:get_result</a></p>
+
+<h2 id="label-Spree+methods">Spree methods<span><a href="#label-Spree+methods">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
 <p>Spree::Product.find(:all)</p>
 
 <p>Spree::Product.all.count</p>
 
+<pre class="ruby"><span class="ruby-constant">Spree</span><span class="ruby-operator">::</span><span class="ruby-constant">Product</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">product</span><span class="ruby-operator">|</span> <span class="ruby-identifier">puts</span> <span class="ruby-identifier">product</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">end</span>;<span class="ruby-keyword">nil</span>
+<span class="ruby-constant">Spree</span><span class="ruby-operator">::</span><span class="ruby-constant">Product</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-string">&quot;Indian Douppion&quot;</span>).<span class="ruby-identifier">delete</span>
+</pre>
+
 <p>Spree::Variant.find_by_sku(“845-0084-S”).name</p>
 
-<pre class="ruby">(<span class="ruby-identifier">rdb</span>:<span class="ruby-value">1</span>) <span class="ruby-constant">Spree</span><span class="ruby-operator">::</span><span class="ruby-constant">Variant</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">line_item</span>.<span class="ruby-identifier">variant_id</span>).<span class="ruby-identifier">product</span>.<span class="ruby-identifier">variants</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">variant</span><span class="ruby-operator">|</span> <span class="ruby-identifier">puts</span> <span class="ruby-identifier">variant</span>.<span class="ruby-identifier">sku</span> }
-(<span class="ruby-identifier">rdb</span>:<span class="ruby-value">1</span>) <span class="ruby-constant">Spree</span><span class="ruby-operator">::</span><span class="ruby-constant">Variant</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">line_item</span>.<span class="ruby-identifier">variant_id</span>).<span class="ruby-identifier">product</span>.<span class="ruby-identifier">variants</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">variant</span><span class="ruby-operator">|</span> <span class="ruby-identifier">puts</span> <span class="ruby-identifier">variant</span>.<span class="ruby-identifier">sku</span> <span class="ruby-keyword">end</span>
-</pre>
+<pre>(rdb:1) Spree::Variant.find_by_id(line_item.variant_id).product.variants.each { |variant| puts variant.sku }
+(rdb:1) Spree::Variant.find_by_id(line_item.variant_id).product.variants.each do |variant| puts variant.sku end</pre>
 
 <p>Spree::Price.find(:all)</p>
 
@@ -128,14 +169,20 @@ stock, then:</p>
 <pre class="ruby"><span class="ruby-constant">Spree</span><span class="ruby-operator">::</span><span class="ruby-constant">Order</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;state = ?&quot;</span>, <span class="ruby-string">&quot;canceled&quot;</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">order</span><span class="ruby-operator">|</span> <span class="ruby-identifier">order</span>.<span class="ruby-identifier">delete</span> <span class="ruby-keyword">end</span>
 </pre>
 
+<p>order = Spree::Order.where(“state = ? AND user_id = ?”, “cart”,user.id)</p>
+
 <p>orders = Spree::Order.where(“state = ? AND total = ?”, “cart”,“84”)</p>
 
-<pre>orders.count
-orders[0].line_items
-Spree::Variant.find_by_id(orders[0].line_items[0].variant_id).name
-orders[0].line_items[0].bsc_spec</pre>
+<pre class="ruby"><span class="ruby-identifier">orders</span>.<span class="ruby-identifier">count</span>
+<span class="ruby-identifier">orders</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">line_items</span>
+<span class="ruby-constant">Spree</span><span class="ruby-operator">::</span><span class="ruby-constant">Variant</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">orders</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">line_items</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">variant_id</span>).<span class="ruby-identifier">name</span>
+<span class="ruby-identifier">orders</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">line_items</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">bsc_spec</span>
+</pre>
 
 <p>Spree::Taxon.find(:all)</p>
+
+<pre class="ruby"><span class="ruby-constant">Spree</span><span class="ruby-operator">::</span><span class="ruby-constant">Taxon</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">parent_id</span><span class="ruby-operator">:</span> (<span class="ruby-constant">Spree</span><span class="ruby-operator">::</span><span class="ruby-constant">Taxonomy</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-string">&quot;Colour&quot;</span>)).<span class="ruby-identifier">id</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">taxon</span><span class="ruby-operator">|</span> <span class="ruby-identifier">puts</span> <span class="ruby-identifier">taxon</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">end</span>;<span class="ruby-keyword">nil</span>
+</pre>
 
 <p>Spree::OptionType.find(:all)</p>
 
@@ -145,7 +192,8 @@ orders[0].line_items[0].bsc_spec</pre>
 
 <p>items = Spree::LineItem.where(“bsc_req_id &gt; ?”, 0)</p>
 
-<pre>item = Spree::LineItem.all.where(&quot;bsc_spec != ?&quot;,&quot;nil&quot;).first</pre>
+<pre class="ruby"><span class="ruby-identifier">item</span> = <span class="ruby-constant">Spree</span><span class="ruby-operator">::</span><span class="ruby-constant">LineItem</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;bsc_spec != ?&quot;</span>,<span class="ruby-string">&quot;nil&quot;</span>).<span class="ruby-identifier">first</span>
+</pre>
 
 <p># “;nil” stops console from displaying return values</p>
 
@@ -153,15 +201,13 @@ orders[0].line_items[0].bsc_spec</pre>
 </pre>
 
 <p>user = Spree::User.find_by_email(“doughazell@gmail.com”)</p>
-
-<p>order = Spree::Order.where(“state = ? AND user_id = ?”, “cart”,user.id)</p>
 </main>
 
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.2.
-  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

@@ -6,19 +6,16 @@
 
 <title>rails-cmds - RDoc Documentation</title>
 
-<link href="./fonts.css" rel="stylesheet">
-<link href="./rdoc.css" rel="stylesheet">
-
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
 </script>
 
 <script src="./js/jquery.js"></script>
-<script src="./js/navigation.js"></script>
-<script src="./js/search_index.js"></script>
-<script src="./js/search.js"></script>
-<script src="./js/searcher.js"></script>
 <script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
 
 
 <body id="top" role="document" class="file">
@@ -61,9 +58,9 @@
     <li><a href="#label-1+-+Look+at+source+code+for+the+current+bundle+gem+version">1 - Look at source code for the current bundle gem version</a>
     <li><a href="#label-2+-+Get+recursive+list+of+dependent+gem+versions">2 - Get recursive list of dependent gem versions</a>
     <li><a href="#label-2a+-+Generate+PNG+of+gem+dependencies+in+Gemfile">2a - Generate PNG of gem dependencies in Gemfile</a>
-    <li><a href="#label-3+-+Get+nice+output+in+console+%28YAML+output+of+last+command%29">3 - Get nice output in console (YAML output of last command)</a>
+    <li><a href="#label-3+-+Rails+console">3 - Rails console</a>
     <li><a href="#label-4+-+Run+functional+tests+for+only+1+controller">4 - Run functional tests for only 1 controller</a>
-    <li><a href="#label-5+-+Put+%3C%25+debugger+%25%3E+tags+in+%27.erb%27+code">5 - Put &lt;% debugger %&gt; tags in ‘.erb’ code</a>
+    <li><a href="#label-5+-+Put+-3C-25+debugger+-25-3E+tags+in+-27.erb-27+code">5 - Put &lt;% debugger %&gt; tags in &#39;.erb&#39; code</a>
   </ul>
 </div>
 
@@ -74,15 +71,33 @@
 
   <ul class="link-list">
   
+    <li><a href="./big-data_txt.html">big-data</a>
+  
+    <li><a href="./coffeescript_txt.html">coffeescript</a>
+  
     <li><a href="./git-cmds_txt.html">git-cmds</a>
   
+    <li><a href="./java_txt.html">java</a>
+  
     <li><a href="./mac-cmds_txt.html">mac-cmds</a>
+  
+    <li><a href="./metaprogramming_txt.html">metaprogramming</a>
   
     <li><a href="./psql_txt.html">psql</a>
   
     <li><a href="./rails-cmds_txt.html">rails-cmds</a>
   
     <li><a href="./rails_txt.html">rails</a>
+  
+    <li><a href="./railscasts/railsCasts2013-14_txt.html">railsCasts2013-14</a>
+  
+    <li><a href="./railscasts/railsCasts2015_txt.html">railsCasts2015</a>
+  
+    <li><a href="./railscasts/railsCasts2016_txt.html">railsCasts2016</a>
+  
+    <li><a href="./rspec_txt.html">rspec</a>
+  
+    <li><a href="./ruby-fann_txt.html">ruby-fann</a>
   
     <li><a href="./ruby_txt.html">ruby</a>
   
@@ -92,6 +107,8 @@
   
     <li><a href="./static-website_txt.html">static-website</a>
   
+    <li><a href="./tdd_txt.html">tdd</a>
+  
   </ul>
 </div>
 
@@ -100,42 +117,73 @@
 
 <main role="main" aria-label="Page rails-cmds.txt">
 
-<h1 id="label-1+-+Look+at+source+code+for+the+current+bundle+gem+version">1 - Look at source code for the current bundle gem version<span><a href="#label-1+-+Look+at+source+code+for+the+current+bundle+gem+version">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-1+-+Look+at+source+code+for+the+current+bundle+gem+version">1 - Look at source code for the current bundle gem version<span><a href="#label-1+-+Look+at+source+code+for+the+current+bundle+gem+version">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
 <p>$ bundle open &lt;gem name&gt;;</p>
 
 <pre>Ctl-O = Return back to Netrw dir listing</pre>
 
-<h1 id="label-2+-+Get+recursive+list+of+dependent+gem+versions">2 - Get recursive list of dependent gem versions<span><a href="#label-2+-+Get+recursive+list+of+dependent+gem+versions">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-2+-+Get+recursive+list+of+dependent+gem+versions">2 - Get recursive list of dependent gem versions<span><a href="#label-2+-+Get+recursive+list+of+dependent+gem+versions">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
 <p>$ gem lock rails-3.2.13;</p>
 
-<h2 id="label-2a+-+Generate+PNG+of+gem+dependencies+in+Gemfile">2a - Generate PNG of gem dependencies in Gemfile<span><a href="#label-2a+-+Generate+PNG+of+gem+dependencies+in+Gemfile">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-2a+-+Generate+PNG+of+gem+dependencies+in+Gemfile">2a - Generate PNG of gem dependencies in Gemfile<span><a href="#label-2a+-+Generate+PNG+of+gem+dependencies+in+Gemfile">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>$ bundle viz;</p>
 
-<h1 id="label-3+-+Get+nice+output+in+console+%28YAML+output+of+last+command%29">3 - Get nice output in console (YAML output of last command)<span><a href="#label-3+-+Get+nice+output+in+console+%28YAML+output+of+last+command%29">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-3+-+Rails+console">3 - Rails console<span><a href="#label-3+-+Rails+console">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<p>&gt; y _</p>
+<p>Get nice output in console (YAML output of last command)</p>
 
-<h1 id="label-4+-+Run+functional+tests+for+only+1+controller">4 - Run functional tests for only 1 controller<span><a href="#label-4+-+Run+functional+tests+for+only+1+controller">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<pre>&gt; y _</pre>
+
+<p>Find exact location of a method</p>
+
+<pre>&gt; method(:app).source_location
+ =&gt; [&quot;/Users/doug/.rvm/gems/ruby-2.2.1/gems/railties-4.2.1/lib/rails/console/app.rb&quot;, 8]
+
+&gt; app.method(:get).source_location
+ =&gt; [&quot;/Users/doug/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/testing/integration.rb&quot;, 31]</pre>
+
+<p>&#39;app&#39; method gives you an integration session instance, so you can
+use it just like when you’re a normal integration test for Rails.</p>
+
+<pre>&gt; app.class
+=&gt; ActionDispatch::Integration::Session</pre>
+
+<p>Get list of methods associated with asset pipeline</p>
+
+<pre>&gt; Rails.application.methods.each do |method| puts method if method =~ /asset/ end;nil</pre>
+
+<p>Get asset file contents</p>
+
+<pre>https://github.com/sstephenson/sprockets
+
+&#39;find_asset&#39; method (aliased as []) to retrieve an asset from a Sprockets environment.
+  &gt; Rails.application.assets.class
+   =&gt; Sprockets::Environment
+
+Pass it a logical path and you&#39;ll get a Sprockets::BundledAsset (Call &#39;to_s&#39; on the resulting asset to access its contents)
+  &gt; Rails.application.assets[&#39;spree/frontend/product.js&#39;].to_s</pre>
+
+<h1 id="label-4+-+Run+functional+tests+for+only+1+controller">4 - Run functional tests for only 1 controller<span><a href="#label-4+-+Run+functional+tests+for+only+1+controller">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
 <p>ruby -I test test/functional/globes_controller_test.rb;</p>
 
-<pre>(The '-I test' adds the test env into the ruby $LOAD_PATH)</pre>
+<pre>(The &#39;-I test&#39; adds the test env into the ruby $LOAD_PATH)</pre>
 
-<h1 id="label-5+-+Put+%3C%25+debugger+%25%3E+tags+in+%27.erb%27+code">5 - Put &lt;% debugger %&gt; tags in ‘.erb’ code<span><a href="#label-5+-+Put+%3C%25+debugger+%25%3E+tags+in+%27.erb%27+code">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-5+-+Put+-3C-25+debugger+-25-3E+tags+in+-27.erb-27+code">5 - Put &lt;% debugger %&gt; tags in &#39;.erb&#39; code<span><a href="#label-5+-+Put+-3C-25+debugger+-25-3E+tags+in+-27.erb-27+code">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
 <pre>(rdb) info variables
 (rdb:1) bt
-  If you are in a View and want to see whole callstack, including the Controller, then DELIBERATELY PUT INCORRECT OBJECT NAME in 'erb'</pre>
+  If you are in a View and want to see whole callstack, including the Controller, then DELIBERATELY PUT INCORRECT OBJECT NAME in &#39;erb&#39;</pre>
 </main>
 
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.2.
-  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

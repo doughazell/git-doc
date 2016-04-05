@@ -6,19 +6,16 @@
 
 <title>mac-cmds - RDoc Documentation</title>
 
-<link href="./fonts.css" rel="stylesheet">
-<link href="./rdoc.css" rel="stylesheet">
-
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
 </script>
 
 <script src="./js/jquery.js"></script>
-<script src="./js/navigation.js"></script>
-<script src="./js/search_index.js"></script>
-<script src="./js/search.js"></script>
-<script src="./js/searcher.js"></script>
 <script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
 
 
 <body id="top" role="document" class="file">
@@ -61,6 +58,7 @@
     <li><a href="#label-1+-+Eject+stuck+DVD">1 - Eject stuck DVD</a>
     <li><a href="#label-2+-+Create+subdomains">2 - Create subdomains</a>
     <li><a href="#label-3+-+Grep+only+certain+files">3 - Grep only certain files</a>
+    <li><a href="#label-3b+-+Grep+hidden+files">3b - Grep hidden files</a>
     <li><a href="#label-4+-+Toggle+case+in+Vi">4 - Toggle case in Vi</a>
     <li><a href="#label-5+-+Package+management+systems">5 - Package management systems</a>
     <li><a href="#label-6+-+Nested+backticks">6 - Nested backticks</a>
@@ -74,15 +72,33 @@
 
   <ul class="link-list">
   
+    <li><a href="./big-data_txt.html">big-data</a>
+  
+    <li><a href="./coffeescript_txt.html">coffeescript</a>
+  
     <li><a href="./git-cmds_txt.html">git-cmds</a>
   
+    <li><a href="./java_txt.html">java</a>
+  
     <li><a href="./mac-cmds_txt.html">mac-cmds</a>
+  
+    <li><a href="./metaprogramming_txt.html">metaprogramming</a>
   
     <li><a href="./psql_txt.html">psql</a>
   
     <li><a href="./rails-cmds_txt.html">rails-cmds</a>
   
     <li><a href="./rails_txt.html">rails</a>
+  
+    <li><a href="./railscasts/railsCasts2013-14_txt.html">railsCasts2013-14</a>
+  
+    <li><a href="./railscasts/railsCasts2015_txt.html">railsCasts2015</a>
+  
+    <li><a href="./railscasts/railsCasts2016_txt.html">railsCasts2016</a>
+  
+    <li><a href="./rspec_txt.html">rspec</a>
+  
+    <li><a href="./ruby-fann_txt.html">ruby-fann</a>
   
     <li><a href="./ruby_txt.html">ruby</a>
   
@@ -92,6 +108,8 @@
   
     <li><a href="./static-website_txt.html">static-website</a>
   
+    <li><a href="./tdd_txt.html">tdd</a>
+  
   </ul>
 </div>
 
@@ -100,51 +118,58 @@
 
 <main role="main" aria-label="Page mac-cmds.txt">
 
-<h1 id="label-1+-+Eject+stuck+DVD">1 - Eject stuck DVD<span><a href="#label-1+-+Eject+stuck+DVD">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
-<hr>
+<h1 id="label-1+-+Eject+stuck+DVD">1 - Eject stuck DVD<span><a href="#label-1+-+Eject+stuck+DVD">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
 <p>$ drutil tray eject;</p>
 
-<h1 id="label-2+-+Create+subdomains">2 - Create subdomains<span><a href="#label-2+-+Create+subdomains">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
-<hr>
+<h1 id="label-2+-+Create+subdomains">2 - Create subdomains<span><a href="#label-2+-+Create+subdomains">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
 <p>Not so far…</p>
 
-<h1 id="label-3+-+Grep+only+certain+files">3 - Grep only certain files<span><a href="#label-3+-+Grep+only+certain+files">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
-<hr>
+<h1 id="label-3+-+Grep+only+certain+files">3 - Grep only certain files<span><a href="#label-3+-+Grep+only+certain+files">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<p>$ find . -name ‘devise.rb’|xargs grep ‘Devise.secret_key’;</p>
+<p>$ find . -name &#39;devise.rb&#39;|xargs grep &#39;Devise.secret_key&#39;;</p>
 
 <p>Much faster than:</p>
 
-<p>$ grep -r ‘Devise.secret_key’ *;</p>
+<p>$ grep -r &#39;Devise.secret_key&#39; *;</p>
 
-<p>$ grep -r –exclude=‘*.log’ ‘spree_bsc’ *;</p>
+<p>$ grep -r –exclude=&#39;*.log&#39; &#39;spree_bsc&#39; *;</p>
 
-<h1 id="label-4+-+Toggle+case+in+Vi">4 - Toggle case in Vi<span><a href="#label-4+-+Toggle+case+in+Vi">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
-<hr>
+<h3 id="label-3b+-+Grep+hidden+files">3b - Grep hidden files<span><a href="#label-3b+-+Grep+hidden+files">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>$ grep -i path .*</p>
+
+<h1 id="label-4+-+Toggle+case+in+Vi">4 - Toggle case in Vi<span><a href="#label-4+-+Toggle+case+in+Vi">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
 <p>~ = Toggle case under cursor</p>
 
-<h1 id="label-5+-+Package+management+systems">5 - Package management systems<span><a href="#label-5+-+Package+management+systems">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
-<hr>
+<h1 id="label-5+-+Package+management+systems">5 - Package management systems<span><a href="#label-5+-+Package+management+systems">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
-<p>MacPorts - Based on FreeBSD Ports system</p>
+<p>MacPorts - Based on FreeBSD Ports system [NOW, NOT INSTALLED ON MY SNOW
+LEOPARD REINSTALL]</p>
 
-<p>Eschews Apple-supplied libs and links against its own to ensure consistency</p>
+<p>Eschews Apple-supplied libs and links against its own to ensure consistency
+Uses &#39;subversion&#39; as its code manager</p>
 </li><li>
-<p>Fink - Based on Debian’s dpkg and apt-get [NOT INSTALLED ON MY SNOW
+<p>Fink - Based on Debian&#39;s dpkg and apt-get [NOT INSTALLED ON MY SNOW
 LEOPARD]</p>
 </li><li>
 <p>Homebrew - Overcome MacPorts perceived downfalls</p>
 
-<p>Written in Ruby + works with OSX’s existing frameworks/libs</p>
+<p>Written in Ruby + works with OSX&#39;s existing frameworks/libs Uses
+&#39;git&#39; as its code manager</p>
+
+<p>Formula: /usr/local/Library/Formula Downloads: /Library/Caches/Homebrew</p>
+
+<p>$ brew install –cc=gcc-5 poco</p>
 </li></ul>
 
-<h1 id="label-6+-+Nested+backticks">6 - Nested backticks<span><a href="#label-6+-+Nested+backticks">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
-<hr>
+<h1 id="label-6+-+Nested+backticks">6 - Nested backticks<span><a href="#label-6+-+Nested+backticks">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<p>Use $(command) rather than `command` eg:</p>
+<p>Use $(command) rather than `command`</p>
+
+<p>eg:</p>
 
 <p>$ pushd $(dirname $(which rails));</p>
 </main>
@@ -153,7 +178,7 @@ LEOPARD]</p>
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.2.
-  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

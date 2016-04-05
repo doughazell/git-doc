@@ -6,19 +6,16 @@
 
 <title>sql - RDoc Documentation</title>
 
-<link href="./fonts.css" rel="stylesheet">
-<link href="./rdoc.css" rel="stylesheet">
-
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
 </script>
 
 <script src="./js/jquery.js"></script>
-<script src="./js/navigation.js"></script>
-<script src="./js/search_index.js"></script>
-<script src="./js/search.js"></script>
-<script src="./js/searcher.js"></script>
 <script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
 
 
 <body id="top" role="document" class="file">
@@ -60,8 +57,9 @@
   <ul class="link-list" role="directory">
     <li><a href="#label-Date">Date</a>
     <li><a href="#label-Functions">Functions</a>
+    <li><a href="#label-Quotes">Quotes</a>
     <li><a href="#label-Join+table">Join table</a>
-    <li><a href="#label-Finding+missing+ID%27s+using+%27Left+Join%27">Finding missing ID’s using ‘Left Join’</a>
+    <li><a href="#label-Finding+missing+ID-27s+using+-27Left+Join-27">Finding missing ID&#39;s using &#39;Left Join&#39;</a>
     <li><a href="#label-Use+list+from+a+Join+table">Use list from a Join table</a>
     <li><a href="#label-Wildcards">Wildcards</a>
     <li><a href="#label-Altering+rows">Altering rows</a>
@@ -76,15 +74,33 @@
 
   <ul class="link-list">
   
+    <li><a href="./big-data_txt.html">big-data</a>
+  
+    <li><a href="./coffeescript_txt.html">coffeescript</a>
+  
     <li><a href="./git-cmds_txt.html">git-cmds</a>
   
+    <li><a href="./java_txt.html">java</a>
+  
     <li><a href="./mac-cmds_txt.html">mac-cmds</a>
+  
+    <li><a href="./metaprogramming_txt.html">metaprogramming</a>
   
     <li><a href="./psql_txt.html">psql</a>
   
     <li><a href="./rails-cmds_txt.html">rails-cmds</a>
   
     <li><a href="./rails_txt.html">rails</a>
+  
+    <li><a href="./railscasts/railsCasts2013-14_txt.html">railsCasts2013-14</a>
+  
+    <li><a href="./railscasts/railsCasts2015_txt.html">railsCasts2015</a>
+  
+    <li><a href="./railscasts/railsCasts2016_txt.html">railsCasts2016</a>
+  
+    <li><a href="./rspec_txt.html">rspec</a>
+  
+    <li><a href="./ruby-fann_txt.html">ruby-fann</a>
   
     <li><a href="./ruby_txt.html">ruby</a>
   
@@ -94,6 +110,8 @@
   
     <li><a href="./static-website_txt.html">static-website</a>
   
+    <li><a href="./tdd_txt.html">tdd</a>
+  
   </ul>
 </div>
 
@@ -102,38 +120,59 @@
 
 <main role="main" aria-label="Page sql.txt">
 
-<h1 id="label-Date">Date<span><a href="#label-Date">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Date">Date<span><a href="#label-Date">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<p>select * from spree_orders where created_at &gt; ‘19 nov 2013’;</p>
+<p>select * from spree_orders where created_at &gt; &#39;19 nov 2013&#39;;</p>
 
-<pre>[SQLite only supports &quot;...where created_at &gt; '2013-11-19';&quot;]</pre>
+<pre>[SQLite only supports &quot;...where created_at &gt; &#39;2013-11-19&#39;;&quot;]</pre>
 
-<h1 id="label-Functions">Functions<span><a href="#label-Functions">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Functions">Functions<span><a href="#label-Functions">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<p>select count(*) from spree_addresses where created_at &gt; ‘1 Dec 2013’;</p>
+<p>select count(*) from spree_addresses where created_at &gt; &#39;1 Dec
+2013&#39;;</p>
 
-<h1 id="label-Join+table">Join table<span><a href="#label-Join+table">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Quotes">Quotes<span><a href="#label-Quotes">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>String are delimited by single quotes</p>
+
+<p>Double quotes strings are interpreted as object identifiers</p>
+
+<pre>Regular identifiers:
+  SELECT *
+  FROM TableX
+  WHERE KeyCol = 124
+
+Delimited identifiers (ie double quotes,&quot;&quot; or square brackets,[]):
+  SELECT *
+  FROM [TableX]         --Delimiter is optional.
+  WHERE [KeyCol] = 124  --Delimiter is optional.
+
+  SELECT *
+  FROM [My Table]      --Identifier contains a space and uses a reserved keyword.
+  WHERE [order] = 10   --Identifier is a reserved keyword.</pre>
+
+<h1 id="label-Join+table">Join table<span><a href="#label-Join+table">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
 <p>select * from spree_line_items where order_id = (select id from
-spree_orders where number = ‘15748490’);</p>
+spree_orders where number = &#39;15748490&#39;);</p>
 <ul><li>
 <p>The join condition of an inner join can be written either in the WHERE
 clause or in the JOIN clause.</p>
 </li></ul>
 
-<h3 id="label-Finding+missing+ID%27s+using+%27Left+Join%27">Finding missing ID’s using ‘Left Join’<span><a href="#label-Finding+missing+ID%27s+using+%27Left+Join%27">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
+<h3 id="label-Finding+missing+ID-27s+using+-27Left+Join-27">Finding missing ID&#39;s using &#39;Left Join&#39;<span><a href="#label-Finding+missing+ID-27s+using+-27Left+Join-27">&para;</a> <a href="#top">&uarr;</a></span></h3>
 
-<p>‘Left Join’ is form of ‘Outer Join’</p>
+<p>&#39;Left Join&#39; is form of &#39;Outer Join&#39;</p>
 
 <p>Null values for T2 columns in every T1 row that fails the ON and WHERE
 boolean</p>
 
-<pre>SELECT r.id as 'r.id', r.id + 1 as FirstAvailableID, r1.id as 'r1.ID'
+<pre>SELECT r.id as &#39;r.id&#39;, r.id + 1 as FirstAvailableID, r1.id as &#39;r1.ID&#39;
 FROM games r
 LEFT JOIN games r1 ON r1.id = r.id + 1
 WHERE r1.id IS NULL</pre>
 
-<h1 id="label-Use+list+from+a+Join+table">Use list from a Join table<span><a href="#label-Use+list+from+a+Join+table">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Use+list+from+a+Join+table">Use list from a Join table<span><a href="#label-Use+list+from+a+Join+table">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>select * from spree_variants where id in (select variant_id from
 spree_line_items where order_id in (14,15));</p>
@@ -141,45 +180,49 @@ spree_line_items where order_id in (14,15));</p>
 <p>SELECT * FROM results where id between 144 and 150</p>
 </li></ul>
 
-<p>Find missing IDs (PK) of ‘results’ table which are not stored in (FK) the
-‘games’ table:</p>
+<p>Find missing IDs (PK) of &#39;results&#39; table which are not stored in
+(FK) the &#39;games&#39; table:</p>
 <ul><li>
-<p>select id from results where first = ‘state’ and state is not null and
-statewithresult is not null and id not in (select result_id from games
-where result_id in (select id from results where first = ‘state’ and state
-is not null and statewithresult is not null))</p>
+<p>select id from results where first = &#39;state&#39; and state is not null
+and statewithresult is not null and id not in (select result_id from games
+where result_id in (select id from results where first = &#39;state&#39;
+and state is not null and statewithresult is not null))</p>
 </li></ul>
 
 <p>The Rails equivalent:</p>
 
-<pre>resultIDs = Result.where(&quot;first = ? and #{args[:first]} is not null and #{args[:second]} is not null&quot;,args[:first]).pluck(:id)
-gameIDs   = Game.where(&quot;player_x = ? and player_o = ? and result_id is not null&quot;,player1,player2).pluck(:result_id)
-missingIDs = resultIDs - gameIDs</pre>
+<pre class="ruby"><span class="ruby-identifier">resultIDs</span> = <span class="ruby-constant">Result</span>.<span class="ruby-identifier">where</span>(<span class="ruby-node">&quot;first = ? and #{args[:first]} is not null and #{args[:second]} is not null&quot;</span>,<span class="ruby-identifier">args</span>[:<span class="ruby-identifier">first</span>]).<span class="ruby-identifier">pluck</span>(:<span class="ruby-identifier">id</span>)
+<span class="ruby-identifier">gameIDs</span>   = <span class="ruby-constant">Game</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;player_x = ? and player_o = ? and result_id is not null&quot;</span>,<span class="ruby-identifier">player1</span>,<span class="ruby-identifier">player2</span>).<span class="ruby-identifier">pluck</span>(:<span class="ruby-identifier">result_id</span>)
+<span class="ruby-identifier">missingIDs</span> = <span class="ruby-identifier">resultIDs</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">gameIDs</span>
+</pre>
 
-<h1 id="label-Wildcards">Wildcards<span><a href="#label-Wildcards">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Wildcards">Wildcards<span><a href="#label-Wildcards">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<p>select * from spree_variants where sku like ‘845-0282%’ and deleted_at is
-null order by sku ASC;</p>
+<p>select * from spree_variants where sku like &#39;845-0282%&#39; and
+deleted_at is null order by sku ASC;</p>
 
-<h1 id="label-Altering+rows">Altering rows<span><a href="#label-Altering+rows">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Altering+rows">Altering rows<span><a href="#label-Altering+rows">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<p>update spree_variants set sku=‘845-0282’ where id=39;</p>
+<p>update spree_variants set sku=&#39;845-0282&#39; where id=39;</p>
 
 <p>delete FROM results where random is not null and state is null and
 statewithresult is null;</p>
 
-<h1 id="label-Misc">Misc<span><a href="#label-Misc">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Misc">Misc<span><a href="#label-Misc">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
 <p>select * from spree_line_items where bsc_spec_id is not null;</p>
 
-<p>select * from spree_variants where deleted_at is null order by sku ASC;</p>
+<p>select * from spree_variants where deleted_at is null order by sku
+ASC|DESC;</p>
+
+<p>select * from schema_migrations order by version DESC limit 2;</p>
 </main>
 
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.2.
-  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

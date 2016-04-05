@@ -6,19 +6,16 @@
 
 <title>ruby - RDoc Documentation</title>
 
-<link href="./fonts.css" rel="stylesheet">
-<link href="./rdoc.css" rel="stylesheet">
-
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
 </script>
 
 <script src="./js/jquery.js"></script>
-<script src="./js/navigation.js"></script>
-<script src="./js/search_index.js"></script>
-<script src="./js/search.js"></script>
-<script src="./js/searcher.js"></script>
 <script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
 
 
 <body id="top" role="document" class="file">
@@ -58,17 +55,21 @@
   <h3>Table of Contents</h3>
 
   <ul class="link-list" role="directory">
-    <li><a href="#label-1+-+Splat+operator+%28%22%2A%22%29">1 - Splat operator (“*”)</a>
-    <li><a href="#label-2+-+Double-bang+operator+%28%22%21%21%22%29">2 - Double-bang operator (“!!”)</a>
-    <li><a href="#label-3+-+Namespace+resolution+operator+%28%22%3A%3A%22%29">3 - Namespace resolution operator (“::”)</a>
-    <li><a href="#label-4+-+Method+syntax">4 - Method syntax</a>
+    <li><a href="#label-1+-+Splat+operator+-28-22-2A-22-29">1 - Splat operator (“*”)</a>
+    <li><a href="#label-1b+-+Block-2FMethod+parameters">1b - Block/Method parameters</a>
+    <li><a href="#label-2+-+Double-bang+operator+-28-22-21-21-22-29">2 - Double-bang operator (“!!”)</a>
+    <li><a href="#label-3+-+Namespace+resolution+operator+-28-22-3A-3A-22-29">3 - Namespace resolution operator (“::”)</a>
+    <li><a href="#label-4+-+Scope+resolution+operator">4 - Scope resolution operator</a>
     <li><a href="#label-5+-+Method+argument+hash+key+syntactic+sugar">5 - Method argument hash key syntactic sugar</a>
-    <li><a href="#label-6+-+Symbol%23to_proc">6 - Symbol#to_proc</a>
+    <li><a href="#label-6+-+Symbol-23to_proc">6 - Symbol#to_proc</a>
     <li><a href="#label-7+-+Send+method">7 - Send method</a>
     <li><a href="#label-8+-+Variable+syntax">8 - Variable syntax</a>
     <li><a href="#label-9+-+Require+vs+Include">9 - Require vs Include</a>
     <li><a href="#label-10+-+Yield">10 - Yield</a>
     <li><a href="#label-11+-+RDoc+of+installed+gems">11 - RDoc of installed gems</a>
+    <li><a href="#label-12+-+Lambda+syntax+in+Ruby+1.9">12 - Lambda syntax in Ruby 1.9</a>
+    <li><a href="#label-13+-+Appending+and+prepending+colon">13 - Appending and prepending colon</a>
+    <li><a href="#label-14+-+Open+classes+via+Override+or+monkey-pathing">14 - Open classes via Override or monkey-pathing</a>
   </ul>
 </div>
 
@@ -79,15 +80,33 @@
 
   <ul class="link-list">
   
+    <li><a href="./big-data_txt.html">big-data</a>
+  
+    <li><a href="./coffeescript_txt.html">coffeescript</a>
+  
     <li><a href="./git-cmds_txt.html">git-cmds</a>
   
+    <li><a href="./java_txt.html">java</a>
+  
     <li><a href="./mac-cmds_txt.html">mac-cmds</a>
+  
+    <li><a href="./metaprogramming_txt.html">metaprogramming</a>
   
     <li><a href="./psql_txt.html">psql</a>
   
     <li><a href="./rails-cmds_txt.html">rails-cmds</a>
   
     <li><a href="./rails_txt.html">rails</a>
+  
+    <li><a href="./railscasts/railsCasts2013-14_txt.html">railsCasts2013-14</a>
+  
+    <li><a href="./railscasts/railsCasts2015_txt.html">railsCasts2015</a>
+  
+    <li><a href="./railscasts/railsCasts2016_txt.html">railsCasts2016</a>
+  
+    <li><a href="./rspec_txt.html">rspec</a>
+  
+    <li><a href="./ruby-fann_txt.html">ruby-fann</a>
   
     <li><a href="./ruby_txt.html">ruby</a>
   
@@ -97,6 +116,8 @@
   
     <li><a href="./static-website_txt.html">static-website</a>
   
+    <li><a href="./tdd_txt.html">tdd</a>
+  
   </ul>
 </div>
 
@@ -105,11 +126,12 @@
 
 <main role="main" aria-label="Page ruby.txt">
 
-<h1 id="label-1+-+Splat+operator+%28%22%2A%22%29">1 - Splat operator (“*”)<span><a href="#label-1+-+Splat+operator+%28%22%2A%22%29">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-1+-+Splat+operator+-28-22-2A-22-29">1 - Splat operator (“*”)<span><a href="#label-1+-+Splat+operator+-28-22-2A-22-29">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
 <p>Entry in arg list “soaks up” list of args</p>
 
-<pre>http://www.catb.org/jargon/html/S/splat.html</pre>
+<pre class="ruby"><span class="ruby-identifier">http</span>:<span class="ruby-operator">/</span><span class="ruby-regexp">/www.catb.org/</span><span class="ruby-identifier">jargon</span><span class="ruby-operator">/</span><span class="ruby-identifier">html</span><span class="ruby-operator">/</span><span class="ruby-constant">S</span><span class="ruby-operator">/</span><span class="ruby-identifier">splat</span>.<span class="ruby-identifier">html</span>
+</pre>
 
 <p>CAN BE USED TO FIND LIST OF ARGS PASSED TO BLOCK:</p>
 
@@ -119,16 +141,20 @@
 <span class="ruby-keyword">end</span>
 </pre>
 
-<p>[CoffeeScript initially used the “*”VAR then changed to VAR“…” <a
+<p>[CoffeeScript initially used the “*VAR” then changed to “VAR…” <a
 href="https://github.com/jashkenas/coffee-script/issues/45">github.com/jashkenas/coffee-script/issues/45</a>]</p>
 
-<h1 id="label-2+-+Double-bang+operator+%28%22%21%21%22%29">2 - Double-bang operator (“!!”)<span><a href="#label-2+-+Double-bang+operator+%28%22%21%21%22%29">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h3 id="label-1b+-+Block-2FMethod+parameters">1b - Block/Method parameters<span><a href="#label-1b+-+Block-2FMethod+parameters">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Variable in pipes at the start of the block/method</p>
+
+<h1 id="label-2+-+Double-bang+operator+-28-22-21-21-22-29">2 - Double-bang operator (“!!”)<span><a href="#label-2+-+Double-bang+operator+-28-22-21-21-22-29">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
 <p>The “!” converts the value into a boolean and then negates it.</p>
 
 <pre>The extra &quot;!&quot; negates the negated boolean eg &quot;!! completed_at&quot; -&gt; &quot;if completed&quot;</pre>
 
-<h1 id="label-3+-+Namespace+resolution+operator+%28%22%3A%3A%22%29">3 - Namespace resolution operator (“::”)<span><a href="#label-3+-+Namespace+resolution+operator+%28%22%3A%3A%22%29">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-3+-+Namespace+resolution+operator+-28-22-3A-3A-22-29">3 - Namespace resolution operator (“::”)<span><a href="#label-3+-+Namespace+resolution+operator+-28-22-3A-3A-22-29">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
 <pre class="ruby"><span class="ruby-keyword">module</span> <span class="ruby-constant">SomeModule</span>
  <span class="ruby-keyword">module</span> <span class="ruby-constant">InnerModule</span>
@@ -141,13 +167,19 @@ href="https://github.com/jashkenas/coffee-script/issues/45">github.com/jashkenas
 <span class="ruby-constant">SomeModule</span><span class="ruby-operator">::</span><span class="ruby-constant">InnerModule</span><span class="ruby-operator">::</span><span class="ruby-constant">MyClass</span><span class="ruby-operator">::</span><span class="ruby-constant">CONSTANT</span>
 </pre>
 
-<h1 id="label-4+-+Method+syntax">4 - Method syntax<span><a href="#label-4+-+Method+syntax">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-4+-+Scope+resolution+operator">4 - Scope resolution operator<span><a href="#label-4+-+Scope+resolution+operator">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<pre class="ruby"><span class="ruby-comment"># = instance method (Is it?  Or is that just for routes?  Is it a &quot;.&quot;?)</span>
-<span class="ruby-operator">::</span> = <span class="ruby-keyword">class</span> <span class="ruby-identifier">method</span>
-</pre>
+<pre>.  = instance method     (or message operator)
+:: = class/module method (or scope opertor)
 
-<h1 id="label-5+-+Method+argument+hash+key+syntactic+sugar">5 - Method argument hash key syntactic sugar<span><a href="#label-5+-+Method+argument+hash+key+syntactic+sugar">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+(See http://en.wikipedia.org/wiki/Scope_resolution_operator#Ruby)
+
+[Rails routes use &#39;#&#39; for &#39;Controller#Action&#39;]</pre>
+
+<h1 id="label-5+-+Method+argument+hash+key+syntactic+sugar">5 - Method argument hash key syntactic sugar<span><a href="#label-5+-+Method+argument+hash+key+syntactic+sugar">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>Ruby has implicit hash parameters so enclosing “{}” not required (as in
+option 3)</p>
 <ul><li>
 <p>method(a: 12, b: 13)</p>
 
@@ -160,21 +192,22 @@ href="https://github.com/jashkenas/coffee-script/issues/45">github.com/jashkenas
 <p>method({:a =&gt; 12, :b =&gt; 13})</p>
 </li></ul>
 
-<h1 id="label-6+-+Symbol%23to_proc">6 - Symbol#to_proc<span><a href="#label-6+-+Symbol%23to_proc">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<p>(See <a href="#label-13+-+Appending+and+prepending+colon">13 - Appending
+and prepending colon</a>)</p>
 
-<pre class="ruby"><span class="ruby-string">'bar(&amp;:foo)'</span> <span class="ruby-identifier">converted</span> <span class="ruby-identifier">to</span> <span class="ruby-string">'bar{|x| x.foo}'</span>
-<span class="ruby-constant">Impicit</span> <span class="ruby-keyword">class</span> <span class="ruby-identifier">cast</span> <span class="ruby-identifier">applies</span> <span class="ruby-constant">Symbol</span><span class="ruby-comment">#to_proc to :foo</span>
-</pre>
+<h1 id="label-6+-+Symbol-23to_proc">6 - Symbol#to_proc<span><a href="#label-6+-+Symbol-23to_proc">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<h1 id="label-7+-+Send+method">7 - Send method<span><a href="#label-7+-+Send+method">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<pre>&#39;bar(&amp;:foo)&#39; converted to &#39;bar{|x| x.foo}&#39;
+Impicit class cast applies Symbol#to_proc to :foo</pre>
+
+<h1 id="label-7+-+Send+method">7 - Send method<span><a href="#label-7+-+Send+method">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
 <p>Send a method message to an object</p>
 
-<pre class="ruby"><span class="ruby-constant">Like</span> <span class="ruby-identifier">passing</span> <span class="ruby-identifier">a</span> <span class="ruby-identifier">function</span> <span class="ruby-identifier">pointer</span> <span class="ruby-identifier">to</span> <span class="ruby-identifier">a</span> <span class="ruby-identifier">middleware</span> <span class="ruby-keyword">in</span> <span class="ruby-constant">C</span>
-<span class="ruby-string">'def method_missing'</span> <span class="ruby-identifier">can</span> <span class="ruby-identifier">be</span> <span class="ruby-identifier">used</span> <span class="ruby-identifier">to</span> <span class="ruby-identifier">perform</span> <span class="ruby-identifier">the</span> <span class="ruby-identifier">appropriate</span> <span class="ruby-identifier">action</span>
-</pre>
+<pre>Like passing a function pointer to a middleware in C
+&#39;def method_missing&#39; can be used to perform the appropriate action</pre>
 
-<h1 id="label-8+-+Variable+syntax">8 - Variable syntax<span><a href="#label-8+-+Variable+syntax">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-8+-+Variable+syntax">8 - Variable syntax<span><a href="#label-8+-+Variable+syntax">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>Local  = lowercase letter or underscore name start (within block)</p>
 </li><li>
@@ -185,30 +218,92 @@ href="https://github.com/jashkenas/coffee-script/issues/45">github.com/jashkenas
 <p>Class    = @@ (all instances of class)</p>
 </li></ul>
 
-<h1 id="label-9+-+Require+vs+Include">9 - Require vs Include<span><a href="#label-9+-+Require+vs+Include">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-9+-+Require+vs+Include">9 - Require vs Include<span><a href="#label-9+-+Require+vs+Include">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<p>Require when wanted methods are in another file (‘require_relative’ when in
-same directory)</p>
+<p>Require when wanted methods are in another file (&#39;require_relative&#39;
+when in same directory)</p>
 
 <p>Include when extending classes with other modules (ie mix-ins) eg “include
-Checkout” in ‘spree/core/app/models/spree/order.rb’</p>
+Checkout” in &#39;spree/core/app/models/spree/order.rb&#39;</p>
 
-<h1 id="label-10+-+Yield">10 - Yield<span><a href="#label-10+-+Yield">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-10+-+Yield">10 - Yield<span><a href="#label-10+-+Yield">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
 <p>Yields to the associated block of code (implicitly passed to the method)</p>
 
-<pre>'block_given?' prevents 'yield' giving an error on no block implicitly passed</pre>
+<pre>&#39;block_given?&#39; prevents &#39;yield&#39; giving an error on no block implicitly passed</pre>
 
-<h1 id="label-11+-+RDoc+of+installed+gems">11 - RDoc of installed gems<span><a href="#label-11+-+RDoc+of+installed+gems">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-11+-+RDoc+of+installed+gems">11 - RDoc of installed gems<span><a href="#label-11+-+RDoc+of+installed+gems">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
 <p>$ gem server;</p>
+
+<h1 id="label-12+-+Lambda+syntax+in+Ruby+1.9">12 - Lambda syntax in Ruby 1.9<span><a href="#label-12+-+Lambda+syntax+in+Ruby+1.9">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>&#39;lambda&#39; (ie anonymous functions like &#39;proc&#39;) can not be
+specified with &#39;-&gt;&#39; (or the &#39;stab&#39; operator or “dash
+rocket”). Eg:</p>
+
+<pre>&gt; foo2 = -&gt;(arg) { arg*2 }
+&gt; foo2.call &quot;now&quot;
+ =&gt; nownow
+
+Note the lack of space between -&gt; and (arg).</pre>
+
+<p>“-&gt;(x) { x * 2 }” SAME AS “lambda { |x| x * 2 }”</p>
+
+<p>(&#39;=&gt;&#39;, or “fat comma”, “hash rocket”, binds key-value pairs in a
+hash)</p>
+
+<h1 id="label-13+-+Appending+and+prepending+colon">13 - Appending and prepending colon<span><a href="#label-13+-+Appending+and+prepending+colon">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>New syntax for Ruby 1.9</p>
+
+<p>(“Rails 5.0 will target Ruby 2.2+ exclusively” so up until that release
+then Ruby 1.9.3+ can be used, <a
+href="http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html#ruby-versions">edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html#ruby-versions</a>)</p>
+
+<p>Both are forms of a symbol</p>
+
+<p>Prior to Ruby 1.9 hash&#39;s were defined with more verbose syntax:</p>
+
+<pre class="ruby"><span class="ruby-identifier">hash</span> = {
+  :<span class="ruby-identifier">key</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;value&quot;</span>,
+  :<span class="ruby-identifier">another_key</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">4</span>
+}
+</pre>
+
+<p>Now can use:</p>
+
+<pre class="ruby"><span class="ruby-identifier">hash</span> = {
+  <span class="ruby-identifier">key</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;value&quot;</span>,
+  <span class="ruby-identifier">another_key</span><span class="ruby-operator">:</span> <span class="ruby-value">4</span>
+}
+</pre>
+
+<p>(See <a href="#label-5+-+Method+argument+hash+key+syntactic+sugar">5 -
+Method argument hash key syntactic sugar</a>)</p>
+
+<h1 id="label-14+-+Open+classes+via+Override+or+monkey-pathing">14 - Open classes via Override or monkey-pathing<span><a href="#label-14+-+Open+classes+via+Override+or+monkey-pathing">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>Ruby classes are open</p>
+
+<p><a
+href="http://ruby-journal.com/how-to-open-slash-override-slash-monkey-patch-a-class-in-ruby">ruby-journal.com/how-to-open-slash-override-slash-monkey-patch-a-class-in-ruby</a>/</p>
+
+<p>Can override existing class if already exists (just define it if not)</p>
+
+<pre>http://docs.ruby-lang.org/en/2.0.0/syntax/methods_rdoc.html#label-Overriding</pre>
+
+<p>&#39;class_eval&#39; opens existing class</p>
+
+<pre>If class does not exist then NameError exeception will be raised
+Therefore extra check rather than overriding/defining class</pre>
 </main>
 
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.2.
-  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

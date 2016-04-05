@@ -6,19 +6,16 @@
 
 <title>git-cmds - RDoc Documentation</title>
 
-<link href="./fonts.css" rel="stylesheet">
-<link href="./rdoc.css" rel="stylesheet">
-
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
 </script>
 
 <script src="./js/jquery.js"></script>
-<script src="./js/navigation.js"></script>
-<script src="./js/search_index.js"></script>
-<script src="./js/search.js"></script>
-<script src="./js/searcher.js"></script>
 <script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
 
 
 <body id="top" role="document" class="file">
@@ -62,11 +59,12 @@
     <li><a href="#label-2+-+Reverting+file+to+previous+commit">2 - Reverting file to previous commit</a>
     <li><a href="#label-2a+-+Revert+to+previous+commit">2a - Revert to previous commit</a>
     <li><a href="#label-3+-+Adding+new+Rails+app+as+branch+to+existing+GitHub+repo">3 - Adding new Rails app as branch to existing GitHub repo</a>
-    <li><a href="#label-4+-+Change+the+GitHub+%27master%27+branch+to+the+unrelated+branch+%28created+in+step+3%29">4 - Change the GitHub ‘master’ branch to the unrelated branch (created in step 3)</a>
+    <li><a href="#label-4+-+Change+the+GitHub+-27master-27+branch+to+the+unrelated+branch+-28created+in+step+3-29">4 - Change the GitHub &#39;master&#39; branch to the unrelated branch (created in step 3)</a>
     <li><a href="#label-5+-+Pull+in+contents+of+separate+branch">5 - Pull in contents of separate branch</a>
     <li><a href="#label-6+-+Remove+a+Git+tracked+file+but+NOT+DELETE+IT">6 - Remove a Git tracked file but NOT DELETE IT</a>
     <li><a href="#label-7+-+Push+existing+Git+repo+to+new+GitHub+repo">7 - Push existing Git repo to new GitHub repo</a>
     <li><a href="#label-8+-+Creating+a+tag">8 - Creating a tag</a>
+    <li><a href="#label-9+-+Switch+to+remote+branch+without+detaching+HEAD">9 - Switch to remote branch without detaching HEAD</a>
   </ul>
 </div>
 
@@ -77,15 +75,33 @@
 
   <ul class="link-list">
   
+    <li><a href="./big-data_txt.html">big-data</a>
+  
+    <li><a href="./coffeescript_txt.html">coffeescript</a>
+  
     <li><a href="./git-cmds_txt.html">git-cmds</a>
   
+    <li><a href="./java_txt.html">java</a>
+  
     <li><a href="./mac-cmds_txt.html">mac-cmds</a>
+  
+    <li><a href="./metaprogramming_txt.html">metaprogramming</a>
   
     <li><a href="./psql_txt.html">psql</a>
   
     <li><a href="./rails-cmds_txt.html">rails-cmds</a>
   
     <li><a href="./rails_txt.html">rails</a>
+  
+    <li><a href="./railscasts/railsCasts2013-14_txt.html">railsCasts2013-14</a>
+  
+    <li><a href="./railscasts/railsCasts2015_txt.html">railsCasts2015</a>
+  
+    <li><a href="./railscasts/railsCasts2016_txt.html">railsCasts2016</a>
+  
+    <li><a href="./rspec_txt.html">rspec</a>
+  
+    <li><a href="./ruby-fann_txt.html">ruby-fann</a>
   
     <li><a href="./ruby_txt.html">ruby</a>
   
@@ -95,6 +111,8 @@
   
     <li><a href="./static-website_txt.html">static-website</a>
   
+    <li><a href="./tdd_txt.html">tdd</a>
+  
   </ul>
 </div>
 
@@ -103,195 +121,193 @@
 
 <main role="main" aria-label="Page git-cmds.txt">
 
-<h1 id="label-1+-+Hot+fix">1 - Hot fix<span><a href="#label-1+-+Hot+fix">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
-<hr>
+<h1 id="label-1+-+Hot+fix">1 - Hot fix<span><a href="#label-1+-+Hot+fix">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<p>a) Clone the ‘develop’ branch of ‘mipi’ as ‘hotfix’.</p>
+<p>a) Clone the &#39;develop&#39; branch of &#39;mipi&#39; as
+&#39;hotfix&#39;.</p>
 
-<p>$ git clone -b develop <a
-href="https://github.com/paullong/mipi.git">github.com/paullong/mipi.git</a>
-hotfix;</p>
+<pre>$ git clone -b develop https://github.com/paullong/mipi.git hotfix;</pre>
 
 <p>b) Create and checkout the new hotfix branch.</p>
 
-<p>$ git checkout -b hotfix-20130810;</p>
+<pre>$ git checkout -b hotfix-20130810;</pre>
 
 <p>c) Make changes.</p>
 
-<p>$ git commit -a;</p>
+<pre>$ git commit -a;</pre>
 
-<p>d) Switch to branch ‘develop’.</p>
+<p>d) Switch to branch &#39;develop&#39;.</p>
 
-<p>$ git checkout develop;</p>
+<pre>$ git checkout develop;</pre>
 
-<p>e) Merge the new hotfix branch (without any ‘fast-forward’ issues).</p>
+<p>e) Merge the new hotfix branch (without any &#39;fast-forward&#39; issues).</p>
 
-<p>$ git merge –no-ff hotfix-20130810;</p>
+<pre>$ git merge --no-ff hotfix-20130810;</pre>
 
 <p>f) Delete the new hotfix branch.</p>
 
-<p>$ git branch -d hotfix-20130810;</p>
+<pre>$ git branch -d hotfix-20130810;</pre>
 
-<p>g) Push the ‘develop’ branch merged with the hotfix up to GitHub.</p>
+<p>g) Push the &#39;develop&#39; branch merged with the hotfix up to GitHub.</p>
 
-<p>$ git push origin develop;</p>
+<pre>$ git push origin develop;</pre>
 
-<p>h) Create a pull request from ‘develop’.</p>
+<p>h) Create a pull request from &#39;develop&#39;.</p>
 
-<p>i) Accept pull request from ‘master’;</p>
+<p>i) Accept pull request from &#39;master&#39;;</p>
 
 <p>EY - redeploy!</p>
 
-<h1 id="label-2+-+Reverting+file+to+previous+commit">2 - Reverting file to previous commit<span><a href="#label-2+-+Reverting+file+to+previous+commit">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
-<hr>
+<h1 id="label-2+-+Reverting+file+to+previous+commit">2 - Reverting file to previous commit<span><a href="#label-2+-+Reverting+file+to+previous+commit">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<p>$ git status; $ git checkout – &lt;file&gt;;</p>
+<pre>$ git status;
+$ git checkout -- &lt;file&gt;;</pre>
 
 <p>Restore file deleted in previous commit:</p>
 
-<p>$ git checkout &lt;commit prior to delete&gt; – &lt;filename&gt;;</p>
+<pre>$ git checkout &lt;commit prior to delete&gt; -- &lt;filename&gt;;</pre>
 
 <p>eg “$ git checkout 5a16b0bec533aabf4b2063f0ef6b73970735f83a –
 order_populator_spec.rb”</p>
 
-<h2 id="label-2a+-+Revert+to+previous+commit">2a - Revert to previous commit<span><a href="#label-2a+-+Revert+to+previous+commit">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
-<hr>
+<h2 id="label-2a+-+Revert+to+previous+commit">2a - Revert to previous commit<span><a href="#label-2a+-+Revert+to+previous+commit">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
-<p>$ git reset –hard &lt;sha1-commit-id&gt;</p>
+<pre>$ git reset --hard &lt;sha1-commit-id&gt;</pre>
 
-<h1 id="label-3+-+Adding+new+Rails+app+as+branch+to+existing+GitHub+repo">3 - Adding new Rails app as branch to existing GitHub repo<span><a href="#label-3+-+Adding+new+Rails+app+as+branch+to+existing+GitHub+repo">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
-<hr>
+<h1 id="label-3+-+Adding+new+Rails+app+as+branch+to+existing+GitHub+repo">3 - Adding new Rails app as branch to existing GitHub repo<span><a href="#label-3+-+Adding+new+Rails+app+as+branch+to+existing+GitHub+repo">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<p>$ cd [new app] ; git init; $ git add –all; $ git commit; $ git remote add
-origin <a
-href="https://github.com/doughazell/spreeBSC.git">github.com/doughazell/spreeBSC.git</a>;
-$ git checkout -b 2-1-stable;</p>
+<pre>$ cd [new app] ; git init;
+$ git add --all;
+$ git commit;
+$ git remote add origin https://github.com/doughazell/spreeBSC.git;
+$ git checkout -b 2-1-stable;
+  Switched to a new branch &#39;2-1-stable&#39;
+$ git push origin 2-1-stable;
+  To https://github.com/doughazell/spreeBSC.git
+   * [new branch]      2-1-stable -&gt; 2-1-stable
 
-<pre>Switched to a new branch '2-1-stable'</pre>
-
-<p>$ git push origin 2-1-stable;</p>
-
-<pre>To https://github.com/doughazell/spreeBSC.git
- * [new branch]      2-1-stable -&gt; 2-1-stable</pre>
-
-<p>$ git remote show origin;</p>
-
-<pre>* remote origin
-Fetch URL: https://github.com/doughazell/spreeBSC.git
-Push  URL: https://github.com/doughazell/spreeBSC.git
-HEAD branch: master
-Remote branches:
+$ git remote show origin;
+  * remote origin
+  Fetch URL: https://github.com/doughazell/spreeBSC.git
+  Push  URL: https://github.com/doughazell/spreeBSC.git
+  HEAD branch: master
+  Remote branches:
   2-1-stable    tracked
   develop       new (next fetch will store in remotes/origin)
   doc_dev       new (next fetch will store in remotes/origin)
   master        new (next fetch will store in remotes/origin)
   rest_complete new (next fetch will store in remotes/origin)
-Local refs configured for 'git push':
+  Local refs configured for &#39;git push&#39;:
   2-1-stable pushes to 2-1-stable (up to date)
   master     pushes to master     (local out of date)</pre>
 
-<h1 id="label-4+-+Change+the+GitHub+%27master%27+branch+to+the+unrelated+branch+%28created+in+step+3%29">4 - Change the GitHub ‘master’ branch to the unrelated branch (created in step 3)<span><a href="#label-4+-+Change+the+GitHub+%27master%27+branch+to+the+unrelated+branch+%28created+in+step+3%29">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
-<hr>
+<h1 id="label-4+-+Change+the+GitHub+-27master-27+branch+to+the+unrelated+branch+-28created+in+step+3-29">4 - Change the GitHub &#39;master&#39; branch to the unrelated branch (created in step 3)<span><a href="#label-4+-+Change+the+GitHub+-27master-27+branch+to+the+unrelated+branch+-28created+in+step+3-29">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<p>$ cd src; git clone <a
-href="https://github.com/doughazell/spreeBSC.git">github.com/doughazell/spreeBSC.git</a>
-spreeBSC-master;</p>
+<pre>$ cd src; git clone https://github.com/doughazell/spreeBSC.git spreeBSC-master;</pre>
 
-<p>Firstly rename orig ‘master’.</p>
+<p>Firstly rename orig &#39;master&#39;.</p>
 
-<p>$ git branch -m master master-2-0-4; $ git push origin master-2-0-4;</p>
-
-<pre>To https://github.com/doughazell/spreeBSC.git
-* [new branch]      master-2-0-4 -&gt; master-2-0-4</pre>
+<pre>$ git branch -m master master-2-0-4;
+$ git push origin master-2-0-4;
+  To https://github.com/doughazell/spreeBSC.git
+  * [new branch]      master-2-0-4 -&gt; master-2-0-4</pre>
 
 <p>GitHub:Settings:Default Branch = “2-1-stable”</p>
 
-<p>$ git clone <a
-href="https://github.com/doughazell/spreeBSC.git">github.com/doughazell/spreeBSC.git</a>
-spreeBSC-master; $ git status;</p>
+<pre>$ git clone https://github.com/doughazell/spreeBSC.git spreeBSC-master;
+$ git status;
+  # On branch 2-1-stable
 
-<pre># On branch 2-1-stable</pre>
+$ git push origin :master;
+  - [deleted]         master</pre>
 
-<p>$ git push origin :master;</p>
+<p>Now rename &#39;2-1-stable&#39; to &#39;master&#39; (BUT don&#39;t delete
+orig &#39;2-1-stable&#39; since that&#39;s our new &#39;dev&#39; branch).</p>
 
-<pre>- [deleted]         master</pre>
+<pre>$ git branch -m 2-1-stable master;
+$ git push origin master;
+  * [new branch]      master -&gt; master</pre>
 
-<p>Now rename ‘2-1-stable’ to ‘master’ (BUT don’t delete orig ‘2-1-stable’
-since that’s our new ‘dev’ branch).</p>
-
-<p>$ git branch -m 2-1-stable master; $ git push origin master;</p>
-
-<pre>* [new branch]      master -&gt; master</pre>
-
-<p>Rename + Delete old ‘develop’ branch to prevent any future
+<p>Rename + Delete old &#39;develop&#39; branch to prevent any future
 misunderstandings.</p>
 
-<p>$ git checkout develop; $ git branch -m develop develop-2-0-4; $ git push
-origin develop-2-0-4;</p>
+<pre>$ git checkout develop;
+$ git branch -m develop develop-2-0-4;
+$ git push origin develop-2-0-4;
+  * [new branch]      develop-2-0-4 -&gt; develop-2-0-4
 
-<pre>* [new branch]      develop-2-0-4 -&gt; develop-2-0-4</pre>
-
-<p>$ git push origin :develop;</p>
-
-<pre>- [deleted]         develop</pre>
+$ git push origin :develop;
+  - [deleted]         develop</pre>
 
 <p>Now reset the GitHub repo…</p>
 
 <p>GitHub:Settings:Default Branch = “master”</p>
 
-<h1 id="label-5+-+Pull+in+contents+of+separate+branch">5 - Pull in contents of separate branch<span><a href="#label-5+-+Pull+in+contents+of+separate+branch">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
-<hr>
+<h1 id="label-5+-+Pull+in+contents+of+separate+branch">5 - Pull in contents of separate branch<span><a href="#label-5+-+Pull+in+contents+of+separate+branch">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
 <p>Default of “git pull” = “git fetch” + “git merge FETCH_HEAD”</p>
 
-<p>On branch ‘2-1-stable’:</p>
+<p>On branch &#39;2-1-stable&#39;:</p>
 
-<p>$ git pull origin doc_dev; $ git push;</p>
+<pre>$ git pull origin doc_dev;
+$ git push;</pre>
 
-<h1 id="label-6+-+Remove+a+Git+tracked+file+but+NOT+DELETE+IT">6 - Remove a Git tracked file but NOT DELETE IT<span><a href="#label-6+-+Remove+a+Git+tracked+file+but+NOT+DELETE+IT">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
-<hr>
+<h1 id="label-6+-+Remove+a+Git+tracked+file+but+NOT+DELETE+IT">6 - Remove a Git tracked file but NOT DELETE IT<span><a href="#label-6+-+Remove+a+Git+tracked+file+but+NOT+DELETE+IT">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<p>$ git rm –cached &lt;file&gt;; $ git rm -r –cached &lt;directory&gt;; $ git
-rm –cached &lt;file&gt;; $ git rm –cached &lt;file&gt;;</p>
+<pre>$ git rm --cached &lt;file&gt;;
+$ git rm -r --cached &lt;directory&gt;;</pre>
 
-<h1 id="label-7+-+Push+existing+Git+repo+to+new+GitHub+repo">7 - Push existing Git repo to new GitHub repo<span><a href="#label-7+-+Push+existing+Git+repo+to+new+GitHub+repo">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
-<hr>
-
-<p>Copy repo directory. Create new GitHub repo.</p>
+<h1 id="label-7+-+Push+existing+Git+repo+to+new+GitHub+repo">7 - Push existing Git repo to new GitHub repo<span><a href="#label-7+-+Push+existing+Git+repo+to+new+GitHub+repo">&para;</a> <a href="#top">&uarr;</a></span></h1>
+<ul><li>
+<p>Copy repo directory.</p>
+</li><li>
+<p>Create new GitHub repo.</p>
 
 <p>$ cd ~/src/spree-dynamicTRANSFER ; git remote remove origin; $ git remote
 add origin <a
 href="https://github.com/doughazell/spree-dynamic.git">github.com/doughazell/spree-dynamic.git</a>;
 $ git push -u origin master; $ git remote show origin;</p>
+</li></ul>
 
 <p>Push the current branch to the remote ref matching master in the origin
-repository.  This form is convenient to push the current branch to the
-master without thinking about its local name.</p>
+repository.</p>
 
-<p>$ git push origin HEAD:master;</p>
+<p>This form is convenient to push the current branch to the master without
+thinking about its local name.</p>
+
+<pre>$ git push origin HEAD:master;</pre>
 
 <p>If actually wanted to push the current branch to a matching branch in the
 origin repo (rather than master) then…</p>
 
-<p>$ git push origin [current branch name]; $ git checkout master; $ git push
--f;</p>
-
-<pre>Need to &quot;force&quot; since the master of the origin repo now contains the contents of the new branch</pre>
+<pre>$ git push origin [current branch name];
+$ git checkout master;
+$ git push -f;
+  Need to &quot;force&quot; since the master of the origin repo now contains the contents of the new branch</pre>
 
 <p>$ cd ~/src ; git clone <a
 href="https://github.com/doughazell/spree-dynamic.git">github.com/doughazell/spree-dynamic.git</a>;</p>
 
-<h1 id="label-8+-+Creating+a+tag">8 - Creating a tag<span><a href="#label-8+-+Creating+a+tag">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
-<hr>
+<h1 id="label-8+-+Creating+a+tag">8 - Creating a tag<span><a href="#label-8+-+Creating+a+tag">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<p>$ git tag -a vResultsTable; $ git push –tags;</p>
+<pre>$ git tag -a vResultsTable;
+$ git push --tags;</pre>
+
+<h1 id="label-9+-+Switch+to+remote+branch+without+detaching+HEAD">9 - Switch to remote branch without detaching HEAD<span><a href="#label-9+-+Switch+to+remote+branch+without+detaching+HEAD">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>Need to track a remote branch by also creating a local branch (since git is
+LOCAL CENTRIC)</p>
+
+<pre>$ git clone https://github.com/doughazell/spree-dynamic.git
+$ cd spree-dynamic
+$ git checkout -b spree-3-0 origin/spree-3-0</pre>
 </main>
 
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.2.
-  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 
