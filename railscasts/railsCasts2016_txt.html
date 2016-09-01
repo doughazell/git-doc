@@ -6,6 +6,17 @@
 
 <title>railsCasts2016 - RDoc Documentation</title>
 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-83416778-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
 </script>
@@ -63,6 +74,19 @@
     <li><a href="#label-12+-+Tagging+-23382+">12 - Tagging #382 </a>
     <li><a href="#label-27acts-as-taggable-on-27+gem">&#39;acts-as-taggable-on&#39; gem</a>
     <li><a href="#label-Implementing+tagging+from+scratch">Implementing tagging from scratch</a>
+    <li><a href="#label-13+-+Ransack+-23370+">13 - Ransack #370 </a>
+    <li><a href="#label-Plugin+extensions">Plugin extensions</a>
+    <li><a href="#label-Basic+features+using+GET">Basic features using GET</a>
+    <li><a href="#label-Dynamic+search+form">Dynamic search form</a>
+    <li><a href="#label-Adding+and+removing+conditions+dynamically+via+JavaScript">Adding and removing conditions dynamically via JavaScript</a>
+    <li><a href="#label-GET+to+POST">GET to POST</a>
+    <li><a href="#label-14+-+Image+Manipulation+-23374+">14 - Image Manipulation #374 </a>
+    <li><a href="#label-15+-+FnordMetric+-23378+">15 - FnordMetric #378 </a>
+    <li><a href="#label-16+-+MiniProfiler+-23368">16 - MiniProfiler #368</a>
+    <li><a href="#label-Profiling+app+in+-27production-27+mode">Profiling app in &#39;production&#39; mode</a>
+    <li><a href="#label-17+-+Twitter+Bootstrap+Basics+-23328">17 - Twitter Bootstrap Basics #328</a>
+    <li><a href="#label-Bootstrap+3">Bootstrap 3</a>
+    <li><a href="#label-twitter-bootstrap-rails+generators">twitter-bootstrap-rails generators</a>
   </ul>
 </div>
 
@@ -97,6 +121,8 @@
   
     <li><a href="../railscasts/railsCasts2016_txt.html">railsCasts2016</a>
   
+    <li><a href="../ros_txt.html">ros</a>
+  
     <li><a href="../rspec_txt.html">rspec</a>
   
     <li><a href="../ruby-fann_txt.html">ruby-fann</a>
@@ -110,6 +136,10 @@
     <li><a href="../static-website_txt.html">static-website</a>
   
     <li><a href="../tdd_txt.html">tdd</a>
+  
+    <li><a href="../ubuntu_txt.html">ubuntu</a>
+  
+    <li><a href="../vision_txt.html">vision</a>
   
   </ul>
 </div>
@@ -145,7 +175,7 @@ can be stored in the Redis database</p>
 
 def create
   ...
-    Resque.enqueue(SnippetHighlighter, @snippet.id)
+  Resque.enqueue(SnippetHighlighter, @snippet.id)
   ...
 end</pre>
 
@@ -165,32 +195,38 @@ class SnippetHighlighter
 end</pre>
 
 <p>Embed Resque web interface</p>
+<ul><li>
+<p>So don&#39;t have to start up Sinatra based process with &#39;$
+resque-web&#39;</p>
+</li><li>
+<p>Mount Sinatra Rack app via:</p>
 
-<pre>So don&#39;t have to start up Sinatra based process with &#39;$ resque-web&#39;
+<pre>/config/routes.rb
 
-Mount Sinatra Rack app via:
-  /config/routes.rb
-
-  Coderbits::Application.routes.draw do
-    resources :snippets
-    root :to =&gt; &quot;snippets#new&quot;
-    authenticate :admin do
-      mount Resque::Server, :at =&gt; &quot;/resque&quot;
-    end
+Coderbits::Application.routes.draw do
+  resources :snippets
+  root :to =&gt; &quot;snippets#new&quot;
+  authenticate :admin do
+    mount Resque::Server, :at =&gt; &quot;/resque&quot;
   end
+end</pre>
+</li><li>
+<p>Make sure Resque server is loaded by adding to the &#39;Gemfile&#39;</p>
 
-Make sure Resque server is loaded by adding to the &#39;Gemfile&#39;
-  gem &#39;resque&#39;, :require =&gt; &#39;resque/server&#39;
+<pre class="ruby"><span class="ruby-identifier">gem</span> <span class="ruby-string">&#39;resque&#39;</span>, :<span class="ruby-identifier">require</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;resque/server&#39;</span>
+</pre>
+</li><li>
+<p>Devise will authenticate by wrapping route in &#39;authenticate&#39; block</p>
+</li><li>
+<p>If no Devise then use HTTP Basic Auth in initialiser file</p>
 
-Devise will authenticate by wrapping route in &#39;authenticate&#39; block
+<pre>/config/initializers/resque_auth.rb
+Resque::Server.use(Rack::Auth::Basic) do |user, password|
+  password == &quot;secret&quot;
+end</pre>
+</li></ul>
 
-If no Devise then use HTTP Basic Auth in initialiser file
-  /config/initializers/resque_auth.rb
-  Resque::Server.use(Rack::Auth::Basic) do |user, password|
-    password == &quot;secret&quot;
-  end
-
-GitHub uses Resque</pre>
+<p>GitHub uses Resque</p>
 
 <h1 id="label-10+-+Turbolinks+-23390+">10 - Turbolinks #390 <span><a href="#label-10+-+Turbolinks+-23390+">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
@@ -464,13 +500,408 @@ $ rails g model tagging tag:belongs_to article:belongs_to</pre>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span>
 </pre>
+
+<h1 id="label-13+-+Ransack+-23370+">13 - Ransack #370 <span><a href="#label-13+-+Ransack+-23370+">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>(16/4/16)</p>
+
+<h3 id="label-Plugin+extensions">Plugin extensions<span><a href="#label-Plugin+extensions">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>&#39;<strong>search</strong>&#39; method added to Product model by  <a
+href="https://github.com/activerecord-hackery/ransack/blob/rails-4.2/lib/ransack/adapters/active_record/base.rb">github.com/activerecord-hackery/ransack/blob/rails-4.2/lib/ransack/adapters/active_record/base.rb</a>
+and <a
+href="https://github.com/activerecord-hackery/ransack/blob/rails-4.2/lib/ransack/adapters/active_record.rb">github.com/activerecord-hackery/ransack/blob/rails-4.2/lib/ransack/adapters/active_record.rb</a></p>
+
+<p>&#39;<strong>q</strong>&#39; method added by <a
+href="https://github.com/activerecord-hackery/ransack/blob/rails-4.2/lib/ransack/configuration.rb">github.com/activerecord-hackery/ransack/blob/rails-4.2/lib/ransack/configuration.rb</a></p>
+
+<h3 id="label-Basic+features+using+GET">Basic features using GET<span><a href="#label-Basic+features+using+GET">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Controller changes</p>
+
+<pre>/app/controllers/products_controller.rb
+
+class ProductsController &lt; ApplicationController
+  def index
+    # Originally &quot;@products = Product.all&quot;
+
+    @search = Product.search(params[:q])
+    @products = @search.result
+  end
+end</pre>
+
+<p>View changes</p>
+
+<pre>/app/views/products/index.html.erb
+
+&lt;%= search_form_for @search do |f| %&gt;
+  ...
+&lt;% end %&gt;</pre>
+
+<p>Making results table headers into links that sort the results</p>
+
+<pre>/app/views/products/index.html.erb
+
+&lt;tr&gt;
+  &lt;th&gt;&lt;%= sort_link(@search, :name, &quot;Product Name&quot;) %&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;%= sort_link(@search, :released_on, &quot;Release Date&quot;) %&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;%= sort_link(@search, :price, &quot;Price&quot;) %&gt;&lt;/th&gt;
+&lt;/tr&gt;</pre>
+
+<h3 id="label-Dynamic+search+form">Dynamic search form<span><a href="#label-Dynamic+search+form">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<pre>/app/views/products/index.html.erb
+
+&lt;%= search_form_for @search do |f| %&gt;
+  &lt;%= f.condition_fields do |c| %&gt;
+    ...
+  &lt;% end %&gt;
+&lt;% end %&gt;
+
+/app/controllers/products_controller.rb
+
+class ProductsController &lt; ApplicationController
+  def index
+    ...
+    @search.build_condition
+  end  
+end</pre>
+
+<p>Using this we can also select on associations (as part of the
+&#39;condition_fields&#39;</p>
+
+<pre>&lt;%= a.attribute_select associations: [:category] %&gt;</pre>
+
+<h3 id="label-Adding+and+removing+conditions+dynamically+via+JavaScript">Adding and removing conditions dynamically via JavaScript<span><a href="#label-Adding+and+removing+conditions+dynamically+via+JavaScript">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<pre>Move conditions fields into partial
+
+Create &#39;link_to_add_fields&#39; in /app/helpers/application_helper.rb
+
+module ApplicationHelper
+  def link_to_add_fields(name, f, type)
+    new_object = f.object.send &quot;build_#{type}&quot;
+    id = &quot;new_#{type}&quot;
+    fields = f.send(&quot;#{type}_fields&quot;, new_object, child_index: id) do |builder|
+      render(type.to_s + &quot;_fields&quot;, f: builder)
+    end
+    link_to(name, &#39;#&#39;, class: &quot;add_fields&quot;, data: {id: id, fields: fields.gsub(&quot;\n&quot;, &quot;&quot;)})
+  end
+end
+
+Alter /app/views/products/index.html.erb
+
+&lt;%= search_form_for @search do |f| %&gt;
+  &lt;%= f.condition_fields do |c| %&gt;
+    &lt;%= render &quot;condition_fields&quot;, f: c%&gt;
+  &lt;% end %&gt;
+  &lt;p&gt;&lt;%= link_to_add_fields &quot;Add Conditions&quot;, f, :condition %&gt;
+  &lt;div class=&quot;actions&quot;&gt;&lt;%= f.submit &quot;Search&quot; %&gt;&lt;/div&gt;
+&lt;% end %&gt;
+
+/app/assets/javascripts/products.js.coffee
+
+jQuery -&gt;
+  $(&#39;form&#39;).on &#39;click&#39;, &#39;.remove_fields&#39;, (event) -&gt;
+    $(this).closest(&#39;.field&#39;).remove()
+    event.preventDefault()
+
+  $(&#39;form&#39;).on &#39;click&#39;, &#39;.add_fields&#39;, (event) -&gt;
+    time = new Date().getTime()
+    regexp = new RegExp($(this).data(&#39;id&#39;), &#39;g&#39;)
+    $(this).before($(this).data(&#39;fields&#39;).replace(regexp, time))
+    event.preventDefault()</pre>
+
+<h3 id="label-GET+to+POST">GET to POST<span><a href="#label-GET+to+POST">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>If too many conditions then hit limit of data sent over GET request so use
+POST instead</p>
+<ul><li>
+<p>Alter /config/routes.rb</p>
+</li><li>
+<p>Change View search form</p>
+
+<p>&lt;%= search_form_for @search, url: search_products_path, method: :post do
+|f| %&gt;</p>
+</li><li>
+<p>However sort links still use GET so use Ransack sorting select methods</p>
+
+<pre>/app/controllers/products_controller.rb
+
+class ProductsController &lt; ApplicationController
+  def index
+    ...    
+    @search.build_sort if @search.sorts.empty?
+  end  
+end</pre>
+</li></ul>
+
+<h1 id="label-14+-+Image+Manipulation+-23374+">14 - Image Manipulation #374 <span><a href="#label-14+-+Image+Manipulation+-23374+">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>(24/5/16)</p>
+
+<p><a
+href="http://www.imagemagick.org/script/command-line-tools.php">www.imagemagick.org/script/command-line-tools.php</a></p>
+
+<pre>$ man ImageMagick
+
+$ convert octocat.png -resize &#39;70x70^&#39; -gravity center -crop &#39;70x70+0+0&#39; -quantize GRAY -colors 256 -contrast source.png
+$ composite stamp_overlay.png source.png source.png
+
+&#39;convert&#39; not only processes existing images but can also create from scratch
+$ convert -size 70x70 canvas:red colour.png
+
+$ convert -size 70x70 canvas:red source.png -compose copy-opacity -composite stamp.png
+$ convert -size 70x70 canvas:red \( source.png -negate \) -compose copy-opacity -composite stamp.png
+$ convert -size 70x70 canvas:red \( octocat.png -resize &#39;70x70^&#39; -gravity center -crop &#39;70x70+0+0&#39; -quantize GRAY -colors 256 -contrast stamp_overlay.png -composite -negate \) -compose copy-opacity -composite stamp.png</pre>
+
+<p>Simple ruby script first, &#39;stamp.rb&#39;:</p>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">&quot;rmagick&quot;</span>
+
+<span class="ruby-identifier">source</span> = <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">read</span>(<span class="ruby-string">&quot;octocat.png&quot;</span>).<span class="ruby-identifier">first</span>
+<span class="ruby-identifier">source</span> = <span class="ruby-identifier">source</span>.<span class="ruby-identifier">resize_to_fill</span>(<span class="ruby-value">70</span>, <span class="ruby-value">70</span>).<span class="ruby-identifier">quantize</span>(<span class="ruby-value">256</span>, <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">GRAYColorspace</span>).<span class="ruby-identifier">contrast</span>(<span class="ruby-keyword">true</span>)
+<span class="ruby-identifier">overlay</span> = <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">read</span>(<span class="ruby-string">&quot;stamp_overlay.png&quot;</span>).<span class="ruby-identifier">first</span>
+<span class="ruby-identifier">source</span>.<span class="ruby-identifier">composite!</span>(<span class="ruby-identifier">overlay</span>, <span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">OverCompositeOp</span>)
+<span class="ruby-identifier">colored</span> = <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">70</span>, <span class="ruby-value">70</span>) { <span class="ruby-keyword">self</span>.<span class="ruby-identifier">background_color</span> = <span class="ruby-string">&quot;red&quot;</span> }
+<span class="ruby-identifier">colored</span>.<span class="ruby-identifier">composite!</span>(<span class="ruby-identifier">source</span>.<span class="ruby-identifier">negate</span>, <span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">CopyOpacityCompositeOp</span>)
+<span class="ruby-identifier">colored</span>.<span class="ruby-identifier">write</span>(<span class="ruby-string">&quot;stamp.png&quot;</span>)
+</pre>
+
+<p>or by using command line tools from ruby:</p>
+
+<pre class="ruby"><span class="ruby-comment"># Or through the command line:</span>
+<span class="ruby-identifier">system</span> <span class="ruby-value">&lt;&lt;-COMMAND
+convert -size 70x70 canvas:red \\( octocat.png \
+  -resize &#39;70x70^&#39; -gravity center -crop &#39;70x70+0+0&#39; \
+  -quantize GRAY -colors 256 -contrast stamp_overlay.png \
+  -composite -negate \
+\\) -compose copy-opacity -composite stamp.png
+COMMAND</span>
+</pre>
+
+<p>/app/models/stamp.rb</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">Stamp</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>
+  <span class="ruby-identifier">attr_accessible</span> :<span class="ruby-identifier">image</span>
+  <span class="ruby-identifier">mount_uploader</span> :<span class="ruby-identifier">image</span>, <span class="ruby-constant">StampUploader</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>/app/uploaders/stamp_uploader.rb</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">StampUploader</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">CarrierWave</span><span class="ruby-operator">::</span><span class="ruby-constant">Uploader</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>
+  <span class="ruby-comment"># ...</span>
+  <span class="ruby-node">%w[red green blue purple black]</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">color</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">version</span>(<span class="ruby-identifier">color</span>) { <span class="ruby-identifier">process</span> <span class="ruby-identifier">stamp</span><span class="ruby-operator">:</span> <span class="ruby-identifier">color</span> }
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">stamp</span>(<span class="ruby-identifier">color</span>)
+    <span class="ruby-identifier">manipulate!</span> <span class="ruby-identifier">format</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;png&quot;</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">source</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">overlay_path</span> = <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;app/assets/images/stamp_overlay.png&quot;</span>)
+      <span class="ruby-identifier">overlay</span> = <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">overlay_path</span>).<span class="ruby-identifier">first</span>
+      <span class="ruby-identifier">source</span> = <span class="ruby-identifier">source</span>.<span class="ruby-identifier">resize_to_fill</span>(<span class="ruby-value">70</span>, <span class="ruby-value">70</span>).<span class="ruby-identifier">quantize</span>(<span class="ruby-value">256</span>, <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">GRAYColorspace</span>).<span class="ruby-identifier">contrast</span>(<span class="ruby-keyword">true</span>)
+      <span class="ruby-identifier">source</span>.<span class="ruby-identifier">composite!</span>(<span class="ruby-identifier">overlay</span>, <span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">OverCompositeOp</span>)
+      <span class="ruby-identifier">colored</span> = <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">70</span>, <span class="ruby-value">70</span>) { <span class="ruby-keyword">self</span>.<span class="ruby-identifier">background_color</span> = <span class="ruby-identifier">color</span> }
+      <span class="ruby-identifier">colored</span>.<span class="ruby-identifier">composite</span>(<span class="ruby-identifier">source</span>.<span class="ruby-identifier">negate</span>, <span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">CopyOpacityCompositeOp</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<h1 id="label-15+-+FnordMetric+-23378+">15 - FnordMetric #378 <span><a href="#label-15+-+FnordMetric+-23378+">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>(25/5/16)</p>
+
+<p><a
+href="https://github.com/whitesmith/capistrano-recipes/blob/master/fnordmetric.rb">github.com/whitesmith/capistrano-recipes/blob/master/fnordmetric.rb</a></p>
+
+<p>Add to &#39;cloudreach&#39; app:</p>
+<ul><li>
+<p>/fnordmetric_app.rb</p>
+
+<p>From “Show Notes” in <a
+href="http://railscasts.com/episodes/378-fnordmetric">railscasts.com/episodes/378-fnordmetric</a></p>
+</li><li>
+<p>/config/initializers/fnordmetric.rb</p>
+
+<pre class="ruby"><span class="ruby-constant">FNORD_METRIC</span> = <span class="ruby-constant">FnordMetric</span><span class="ruby-operator">::</span><span class="ruby-constant">API</span>.<span class="ruby-identifier">new</span>
+</pre>
+</li><li>
+<p>/app/controllers/contacts_controller.rb</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
+  <span class="ruby-ivar">@contact</span> = <span class="ruby-constant">Contact</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[:<span class="ruby-identifier">id</span>])
+  <span class="ruby-constant">FNORD_METRIC</span>.<span class="ruby-identifier">event</span>(<span class="ruby-ivar">@contact</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">_type</span><span class="ruby-operator">:</span> :<span class="ruby-identifier">view_contact</span>))
+<span class="ruby-keyword">end</span>
+</pre>
+</li><li>
+<p>/Gemfile</p>
+
+<pre class="ruby"><span class="ruby-identifier">gem</span> <span class="ruby-string">&#39;fnordmetric&#39;</span>
+</pre>
+</li></ul>
+
+<p>Uses Redis</p>
+<ul><li>
+<p>TERM 1: $ redis-server /usr/local/etc/redis.conf</p>
+</li><li>
+<p>TERM 2: $ ruby fnordmetric_app.rb</p>
+
+<pre>&gt;&gt; Thin web server (v1.3.1 codename Triple Espresso)
+&gt;&gt; Listening on 0.0.0.0:4242, CTRL+C to stop</pre>
+</li></ul>
+
+<h1 id="label-16+-+MiniProfiler+-23368">16 - MiniProfiler #368<span><a href="#label-16+-+MiniProfiler+-23368">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>(3/6/16)</p>
+
+<p>/Gemfile</p>
+
+<pre class="ruby"><span class="ruby-identifier">gem</span> <span class="ruby-string">&#39;rack-mini-profiler&#39;</span>
+</pre>
+
+<p>MiniProfiler enabled by default in &#39;development&#39;</p>
+
+<p>/app/views/projects/index.html.erb</p>
+
+<pre>&lt;%= pluralize project.tasks.length, &quot;task&quot; %&gt;
+to
+&lt;%= pluralize project.tasks.size, &quot;task&quot; %&gt;</pre>
+
+<p>To make it more efficient we need to write some SQL:</p>
+
+<p>/app/controllers/projects_controller.rb</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+  <span class="ruby-ivar">@projects</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">order</span>(:<span class="ruby-identifier">created_at</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;projects.*, count(tasks.id) as tasks_count&quot;</span>).<span class="ruby-identifier">joins</span>(
+  <span class="ruby-string">&quot;left outer join tasks on project_id = projects.id&quot;</span>
+  ).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;projects.id&quot;</span>)
+<span class="ruby-keyword">end</span>
+</pre>
+<ul><li>
+<p>&#39;tasks_count&#39; is an important name since &#39;tasks.size&#39; will
+use it</p>
+</li><li>
+<p>Using &#39;joins(:tasks)&#39; will miss any projects without tasks so need
+custom SQL</p>
+</li></ul>
+
+<p>Can measure specific piece of code with &#39;Rack::MiniProfiler.step&#39;:</p>
+
+<p>/app/controllers/projects_controller.rb</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+  <span class="ruby-ivar">@projects</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">order</span>(:<span class="ruby-identifier">created_at</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;projects.*, count(tasks.id) as tasks_count&quot;</span>).<span class="ruby-identifier">joins</span>(<span class="ruby-string">&quot;left outer join tasks on project_id = projects.id&quot;</span>).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;projects.id&quot;</span>)
+  <span class="ruby-constant">Rack</span><span class="ruby-operator">::</span><span class="ruby-constant">MiniProfiler</span>.<span class="ruby-identifier">step</span>(<span class="ruby-string">&quot;fetch projects&quot;</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-ivar">@projects</span>.<span class="ruby-identifier">all</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+</pre>
+<ul><li>
+<p>The projects are lazy-loaded by the view in this action so calling
+&#39;@projects.all&#39; loads them here for duration measurement</p>
+</li></ul>
+
+<h3 id="label-Profiling+app+in+-27production-27+mode">Profiling app in &#39;production&#39; mode<span><a href="#label-Profiling+app+in+-27production-27+mode">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>/config/environments/production.rb</p>
+
+<pre class="ruby"><span class="ruby-comment"># Enable Rails&#39;s static asset server</span>
+<span class="ruby-identifier">config</span>.<span class="ruby-identifier">serve_static_assets</span> = <span class="ruby-keyword">true</span>
+</pre>
+
+<p>Then:</p>
+
+<pre>$ rake assets:precompile
+$ rake db:setup RAILS_ENV=production
+$ rails s -e production</pre>
+
+<p>Show MiniProfiler in Production mode</p>
+
+<p>/app/controllers/application_controller.rb</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">ApplicationController</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">ActionController</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>
+  <span class="ruby-identifier">protect_from_forgery</span>
+
+  <span class="ruby-identifier">before_filter</span> :<span class="ruby-identifier">miniprofiler</span>
+
+  <span class="ruby-identifier">private</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">miniprofiler</span>
+    <span class="ruby-constant">Rack</span><span class="ruby-operator">::</span><span class="ruby-constant">MiniProfiler</span>.<span class="ruby-identifier">authorize_request</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+</pre>
+<ul><li>
+<p>We can change this behaviour based on user (eg only for admin)</p>
+</li></ul>
+
+<p><a
+href="http://samsaffron.com/archive/2012/07/12/miniprofiler-ruby-edition">samsaffron.com/archive/2012/07/12/miniprofiler-ruby-edition</a></p>
+
+<p><a
+href="https://github.com/SamSaffron/MiniProfiler/blob/master/Ruby/README.md">github.com/SamSaffron/MiniProfiler/blob/master/Ruby/README.md</a></p>
+
+<h1 id="label-17+-+Twitter+Bootstrap+Basics+-23328">17 - Twitter Bootstrap Basics #328<span><a href="#label-17+-+Twitter+Bootstrap+Basics+-23328">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>(16/8/16)</p>
+
+<p>One option is to download from <a
+href="http://getbootstrap.com">getbootstrap.com</a>/ + move files into
+appropriate places in filesystem</p>
+
+<p>…but better if using Rails to use a gem (because Bootstrap uses Less)</p>
+
+<p>twitter-bootstrap-rails (<a
+href="https://github.com/seyhunak/twitter-bootstrap-rails">github.com/seyhunak/twitter-bootstrap-rails</a>)</p>
+
+<pre>Works directly with Less
+Has generators built in</pre>
+
+<p>$ rails g bootstrap:install</p>
+
+<p>Layouts</p>
+<ul><li>
+<p>Fixed</p>
+
+<pre>&lt;div class=&quot;container&quot;&gt;</pre>
+</li><li>
+<p>Fluid</p>
+
+<pre>&lt;div class=&quot;container-fluid&quot;&gt;</pre>
+
+<p>Wrap &#39;&lt;%= yield %&gt;&#39; in &#39;application.html.erb&#39;</p>
+</li></ul>
+
+<h3 id="label-Bootstrap+3">Bootstrap 3<span><a href="#label-Bootstrap+3">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Railscast uses &#39;twitter-bootstrap-rails (2.0.3)&#39;</p>
+
+<pre>(as seen from &#39;Gemfile.lock&#39; in &#39;ryanb-railscasts-episodes-f72b83a.tar.gz&#39;)</pre>
+
+<p><a
+href="http://blog.jetstrap.com/2013/08/bootstrap-3-grids-explained">blog.jetstrap.com/2013/08/bootstrap-3-grids-explained</a>/</p>
+
+<h3 id="label-twitter-bootstrap-rails+generators">twitter-bootstrap-rails generators<span><a href="#label-twitter-bootstrap-rails+generators">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Themed generators to improve the look of scaffold generated code view</p>
+<ul><li>
+<p>$ rails g scaffold product name price:decimal –skip-stylesheets</p>
+</li><li>
+<p>$ rails g bootstrap:themed products -f</p>
+
+<p>The &#39;-f&#39; forces it to overwrite the generated views</p>
+</li></ul>
+
+<p><a
+href="https://www.sitepoint.com/twitter-bootstrap-less-and-sass-understanding-your-options-for-rails-3-1">www.sitepoint.com/twitter-bootstrap-less-and-sass-understanding-your-options-for-rails-3-1</a>/</p>
 </main>
 
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.2.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

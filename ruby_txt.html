@@ -6,6 +6,17 @@
 
 <title>ruby - RDoc Documentation</title>
 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-83416778-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
 </script>
@@ -61,7 +72,7 @@
     <li><a href="#label-3+-+Namespace+resolution+operator+-28-22-3A-3A-22-29">3 - Namespace resolution operator (“::”)</a>
     <li><a href="#label-4+-+Scope+resolution+operator">4 - Scope resolution operator</a>
     <li><a href="#label-5+-+Method+argument+hash+key+syntactic+sugar">5 - Method argument hash key syntactic sugar</a>
-    <li><a href="#label-6+-+Symbol-23to_proc">6 - Symbol#to_proc</a>
+    <li><a href="#label-6+-+-26Symbol+--3E+Symbol-23to_proc">6 - &amp;Symbol -&gt; Symbol#to_proc</a>
     <li><a href="#label-7+-+Send+method">7 - Send method</a>
     <li><a href="#label-8+-+Variable+syntax">8 - Variable syntax</a>
     <li><a href="#label-9+-+Require+vs+Include">9 - Require vs Include</a>
@@ -70,6 +81,10 @@
     <li><a href="#label-12+-+Lambda+syntax+in+Ruby+1.9">12 - Lambda syntax in Ruby 1.9</a>
     <li><a href="#label-13+-+Appending+and+prepending+colon">13 - Appending and prepending colon</a>
     <li><a href="#label-14+-+Open+classes+via+Override+or+monkey-pathing">14 - Open classes via Override or monkey-pathing</a>
+    <li><a href="#label-15+-+Find+where+method+defined">15 - Find where method defined</a>
+    <li><a href="#label-16+-+Sinatra+and+Rack">16 - Sinatra and Rack</a>
+    <li><a href="#label-Rack">Rack</a>
+    <li><a href="#label-Sinatra">Sinatra</a>
   </ul>
 </div>
 
@@ -104,6 +119,8 @@
   
     <li><a href="./railscasts/railsCasts2016_txt.html">railsCasts2016</a>
   
+    <li><a href="./ros_txt.html">ros</a>
+  
     <li><a href="./rspec_txt.html">rspec</a>
   
     <li><a href="./ruby-fann_txt.html">ruby-fann</a>
@@ -117,6 +134,10 @@
     <li><a href="./static-website_txt.html">static-website</a>
   
     <li><a href="./tdd_txt.html">tdd</a>
+  
+    <li><a href="./ubuntu_txt.html">ubuntu</a>
+  
+    <li><a href="./vision_txt.html">vision</a>
   
   </ul>
 </div>
@@ -195,12 +216,30 @@ option 3)</p>
 <p>(See <a href="#label-13+-+Appending+and+prepending+colon">13 - Appending
 and prepending colon</a>)</p>
 
-<h1 id="label-6+-+Symbol-23to_proc">6 - Symbol#to_proc<span><a href="#label-6+-+Symbol-23to_proc">&para;</a> <a href="#top">&uarr;</a></span></h1>
+<h1 id="label-6+-+-26Symbol+--3E+Symbol-23to_proc">6 - &amp;Symbol -&gt; Symbol#to_proc<span><a href="#label-6+-+-26Symbol+--3E+Symbol-23to_proc">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<pre>&#39;bar(&amp;:foo)&#39; converted to &#39;bar{|x| x.foo}&#39;
-Impicit class cast applies Symbol#to_proc to :foo</pre>
+<p>Impicit class cast applies &#39;Symbol#to_proc&#39; to &#39;:foo&#39;</p>
+
+<pre>&#39;bar(&amp;:foo)&#39; converted to &#39;bar{|x| x.foo}&#39;</pre>
+
+<p>Can be used with &#39;map&#39; on array of objects</p>
+
+<pre>&#39;~/.rvm/gems/ruby-2.2.2/gems/fnordmetric-1.2.9/lib/fnordmetric.rb&#39;:
+def self.register(obj)
+  @@pool.push(obj)
+end
+
+def self.start_em
+  EM.run do
+    EM.next_tick do
+      (@@pool || []).map(&amp;:initialized)
+    end
+  end
+end</pre>
 
 <h1 id="label-7+-+Send+method">7 - Send method<span><a href="#label-7+-+Send+method">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>(See &#39;tdd.txt&#39; for details about test doubles hooking messages)</p>
 
 <p>Send a method message to an object</p>
 
@@ -238,7 +277,7 @@ Checkout” in &#39;spree/core/app/models/spree/order.rb&#39;</p>
 
 <h1 id="label-12+-+Lambda+syntax+in+Ruby+1.9">12 - Lambda syntax in Ruby 1.9<span><a href="#label-12+-+Lambda+syntax+in+Ruby+1.9">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<p>&#39;lambda&#39; (ie anonymous functions like &#39;proc&#39;) can not be
+<p>&#39;lambda&#39; (ie anonymous functions like &#39;proc&#39;) can now be
 specified with &#39;-&gt;&#39; (or the &#39;stab&#39; operator or “dash
 rocket”). Eg:</p>
 
@@ -297,13 +336,60 @@ href="http://ruby-journal.com/how-to-open-slash-override-slash-monkey-patch-a-cl
 
 <pre>If class does not exist then NameError exeception will be raised
 Therefore extra check rather than overriding/defining class</pre>
+
+<h1 id="label-15+-+Find+where+method+defined">15 - Find where method defined<span><a href="#label-15+-+Find+where+method+defined">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>&#39;debugger&#39; or &#39;&lt;% debugger %&gt;&#39;</p>
+<ul><li>
+<p>(byebug) method(:title)</p>
+
+<pre class="ruby"><span class="ruby-comment">#&lt;Method: #&lt;Class:0x0000010363e288&gt;(LayoutHelper)#title&gt;</span>
+</pre>
+</li><li>
+<p>(byebug) method(:title).source_location</p>
+
+<pre class="ruby">[<span class="ruby-string">&quot;/Users/doug/src/cloudreach/app/helpers/layout_helper.rb&quot;</span>, <span class="ruby-value">6</span>]
+</pre>
+</li></ul>
+
+<h1 id="label-16+-+Sinatra+and+Rack">16 - Sinatra and Rack<span><a href="#label-16+-+Sinatra+and+Rack">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>(28/8/16)</p>
+
+<h3 id="label-Rack">Rack<span><a href="#label-Rack">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p><a href="http://rack.github.io">rack.github.io</a>/</p>
+
+<p>Rack, a modular Ruby webserver interface.</p>
+
+<pre>Rack provides a minimal, modular and adaptable interface for developing web applications in Ruby.
+
+By wrapping HTTP requests and responses in the simplest way possible, it unifies and distills the API for web servers, 
+web frameworks, and middleware into a single method call.</pre>
+<ul><li>
+<p>Thin is rails default rack-based web server (<a
+href="http://code.macournoyer.com/thin">code.macournoyer.com/thin</a>/)</p>
+</li></ul>
+
+<h3 id="label-Sinatra">Sinatra<span><a href="#label-Sinatra">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p><a
+href="http://www.sinatrarb.com/intro.html">www.sinatrarb.com/intro.html</a></p>
+
+<p>Sinatra is a small “framework” on top of Rack</p>
+
+<pre>Sinatra is a DSL for quickly creating web applications in Ruby with minimal effort</pre>
+<ul><li>
+<p>Thin is chosen rack-based web server (<a
+href="http://code.macournoyer.com/thin">code.macournoyer.com/thin</a>/)</p>
+</li></ul>
 </main>
 
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.2.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>psql - RDoc Documentation</title>
+<title>ubuntu - RDoc Documentation</title>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -66,11 +66,12 @@
   <h3>Table of Contents</h3>
 
   <ul class="link-list" role="directory">
-    <li><a href="#label-1+-+List+tables-2C+views+and+sequences+-28ie+all+relations-29">1 - List tables, views and sequences (ie all relations)</a>
-    <li><a href="#label-2+-+List+tables">2 - List tables</a>
-    <li><a href="#label-3+-+List+databases">3 - List databases</a>
-    <li><a href="#label-4+-+Help">4 - Help</a>
-    <li><a href="#label-5+-+Show+current+user+and+database">5 - Show current user and database</a>
+    <li><a href="#label-u0+-+Ubuntu+overview">u0 - Ubuntu overview</a>
+    <li><a href="#label-Pkg+list">Pkg list</a>
+    <li><a href="#label-u1+-+Keyboard+mapping">u1 - Keyboard mapping</a>
+    <li><a href="#label-u2+-+Get+Macbook+wireless+working-3A">u2 - Get Macbook wireless working:</a>
+    <li><a href="#label-u3+-+Additional+packages+via+Ubuntu+Software+Centre">u3 - Additional packages via Ubuntu Software Centre</a>
+    <li><a href="#label-u4+-+Additional+packages+via+apt">u4 - Additional packages via apt</a>
   </ul>
 </div>
 
@@ -131,32 +132,93 @@
   </div>
 </nav>
 
-<main role="main" aria-label="Page psql.txt">
+<main role="main" aria-label="Page ubuntu.txt">
 
-<h1 id="label-1+-+List+tables-2C+views+and+sequences+-28ie+all+relations-29">1 - List tables, views and sequences (ie all relations)<span><a href="#label-1+-+List+tables-2C+views+and+sequences+-28ie+all+relations-29">&para;</a> <a href="#top">&uarr;</a></span></h1>
+<h1 id="label-u0+-+Ubuntu+overview">u0 - Ubuntu overview<span><a href="#label-u0+-+Ubuntu+overview">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<pre class="ruby"><span class="ruby-comment"># \d</span>
-</pre>
+<p>Built on Debain &#39;hence apt and dpkg&#39;</p>
 
-<h1 id="label-2+-+List+tables">2 - List tables<span><a href="#label-2+-+List+tables">&para;</a> <a href="#top">&uarr;</a></span></h1>
+<h3 id="label-Pkg+list">Pkg list<span><a href="#label-Pkg+list">&para;</a> <a href="#top">&uarr;</a></span></h3>
 
-<pre class="ruby"><span class="ruby-comment"># \dt</span>
-</pre>
+<p>$ apt –installed list</p>
 
-<h1 id="label-3+-+List+databases">3 - List databases<span><a href="#label-3+-+List+databases">&para;</a> <a href="#top">&uarr;</a></span></h1>
+<p>$ apt search xdotool</p>
+<ul><li>
+<p>$ apt-cache search xdotool</p>
+</li></ul>
 
-<pre class="ruby"><span class="ruby-comment"># \l</span>
-</pre>
+<p>$ dpkg -l</p>
+<ul><li>
+<p>$ dpkg -L vim</p>
+</li></ul>
 
-<h1 id="label-4+-+Help">4 - Help<span><a href="#label-4+-+Help">&para;</a> <a href="#top">&uarr;</a></span></h1>
+<p><a
+href="http://packages.ubuntu.com/trusty/i386/vim/filelist">packages.ubuntu.com/trusty/i386/vim/filelist</a></p>
 
-<pre class="ruby"><span class="ruby-comment"># \?</span>
-</pre>
+<pre>$ cd /etc/alternatives ; ls -l `which vim`
+  lrwxrwxrwx 1 root root 21 May 18 14:43 /usr/bin/vim -&gt; /etc/alternatives/vim
+$ ls -l vim
+  lrwxrwxrwx 1 root root 18 May 18 14:43 vim -&gt; /usr/bin/vim.basic
 
-<h1 id="label-5+-+Show+current+user+and+database">5 - Show current user and database<span><a href="#label-5+-+Show+current+user+and+database">&para;</a> <a href="#top">&uarr;</a></span></h1>
+/etc/alternatives/README</pre>
 
-<pre class="ruby"><span class="ruby-comment"># \c</span>
-</pre>
+<h1 id="label-u1+-+Keyboard+mapping">u1 - Keyboard mapping<span><a href="#label-u1+-+Keyboard+mapping">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<pre>$ sudo apt-get install keyboard-configuration
+
+$ sudo dpkg-reconfigure keyboard-configuration
+  -&gt; MacBook / MacBookPro (Intl)
+  -&gt; AltGrp = R Alt
+  -&gt; defaults</pre>
+
+<h1 id="label-u2+-+Get+Macbook+wireless+working-3A">u2 - Get Macbook wireless working:<span><a href="#label-u2+-+Get+Macbook+wireless+working-3A">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<pre>$ sudo apt-get update
+$ sudo apt-get install firmware-b43-installer
+Reboot</pre>
+
+<h1 id="label-u3+-+Additional+packages+via+Ubuntu+Software+Centre">u3 - Additional packages via Ubuntu Software Centre<span><a href="#label-u3+-+Additional+packages+via+Ubuntu+Software+Centre">&para;</a> <a href="#top">&uarr;</a></span></h1>
+<ul><li>
+<p>System-Vi IMproved</p>
+</li><li>
+<p>dwww</p>
+
+<pre>$ sudo a2enmod cgi
+$ sudo service apache2 restart
+$ dwww vim-doc</pre>
+</li><li>
+<p>chrome</p>
+
+<p>Needed since Channel4od didn&#39;t support flash version for Linux (whereas
+BBC iPlayer does!)</p>
+
+<p><a
+href="https://support.google.com/chrome/answer/7026064?hl=en&rd=1">support.google.com/chrome/answer/7026064?hl=en&rd=1</a></p>
+
+<p>(Still not work on MacBook 5.1 but can use OSX Firefox…)</p>
+</li><li>
+<p>qtcreator</p>
+
+<p>Help files not work from link in Welcome page (<a
+href="https://bugs.launchpad.net/ubuntu/+bug/1356515">bugs.launchpad.net/ubuntu/+bug/1356515</a>)</p>
+
+<p>Open Qt Creator &gt; Tools &gt; Options &gt; Help &gt; Documentation &gt;
+Add &gt;  /usr/share/qtcreator/doc/ choose qtcreator.qch</p>
+</li></ul>
+
+<h1 id="label-u4+-+Additional+packages+via+apt">u4 - Additional packages via apt<span><a href="#label-u4+-+Additional+packages+via+apt">&para;</a> <a href="#top">&uarr;</a></span></h1>
+<ul><li>
+<p>Temperature sensors</p>
+
+<p>$ sudo apt-get install hardinfo</p>
+
+<pre>This also installs &#39;sensors&#39;
+
+$ sudo sensors-detect
+Return to accept each default answer
+
+$ sensors</pre>
+</li></ul>
 </main>
 
 

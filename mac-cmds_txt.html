@@ -6,6 +6,17 @@
 
 <title>mac-cmds - RDoc Documentation</title>
 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-83416778-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
 </script>
@@ -55,6 +66,7 @@
   <h3>Table of Contents</h3>
 
   <ul class="link-list" role="directory">
+    <li><a href="#label-Reinstall+SnowLeopard">Reinstall SnowLeopard</a>
     <li><a href="#label-1+-+Eject+stuck+DVD">1 - Eject stuck DVD</a>
     <li><a href="#label-2+-+Create+subdomains">2 - Create subdomains</a>
     <li><a href="#label-3+-+Grep+only+certain+files">3 - Grep only certain files</a>
@@ -62,6 +74,8 @@
     <li><a href="#label-4+-+Toggle+case+in+Vi">4 - Toggle case in Vi</a>
     <li><a href="#label-5+-+Package+management+systems">5 - Package management systems</a>
     <li><a href="#label-6+-+Nested+backticks">6 - Nested backticks</a>
+    <li><a href="#label-7+-+Share+files+with+linux">7 - Share files with linux</a>
+    <li><a href="#label-8+-+Booting+MacBook+5.1+into+64-bit+mode">8 - Booting MacBook 5.1 into 64-bit mode</a>
   </ul>
 </div>
 
@@ -96,6 +110,8 @@
   
     <li><a href="./railscasts/railsCasts2016_txt.html">railsCasts2016</a>
   
+    <li><a href="./ros_txt.html">ros</a>
+  
     <li><a href="./rspec_txt.html">rspec</a>
   
     <li><a href="./ruby-fann_txt.html">ruby-fann</a>
@@ -110,6 +126,10 @@
   
     <li><a href="./tdd_txt.html">tdd</a>
   
+    <li><a href="./ubuntu_txt.html">ubuntu</a>
+  
+    <li><a href="./vision_txt.html">vision</a>
+  
   </ul>
 </div>
 
@@ -117,6 +137,91 @@
 </nav>
 
 <main role="main" aria-label="Page mac-cmds.txt">
+
+<h1 id="label-Reinstall+SnowLeopard">Reinstall SnowLeopard<span><a href="#label-Reinstall+SnowLeopard">&para;</a> <a href="#top">&uarr;</a></span></h1>
+<ul><li>
+<p>Install Git + Clone &#39;<a
+href="https://github.com/doughazell/spree-dynamic.git">github.com/doughazell/spree-dynamic.git</a>&#39;</p>
+
+<p>Download &#39;git-2.3.5-intel-universal-snow-leopard.dmg&#39;</p>
+
+<p>See &#39;oldHome3/src/devlogeD/old/2013/apr26-SnowLeopard&#39;</p>
+</li><li>
+<p>Install Homebrew:</p>
+
+<p>Remove from &#39;.profile&#39;</p>
+
+<pre class="ruby"><span class="ruby-identifier">export</span> <span class="ruby-constant">SSL_CERT_FILE</span>
+<span class="ruby-identifier">export</span> <span class="ruby-constant">SSL_CERT_FILE</span>
+<span class="ruby-identifier">export</span> <span class="ruby-constant">DYLD_LIBRARY_PATH</span>
+</pre>
+
+<p>$ ruby -e “$(curl -fsSL <a
+href="https://raw.githubusercontent.com/Homebrew/install/master/install">raw.githubusercontent.com/Homebrew/install/master/install</a>)”</p>
+</li><li>
+<p>RVM:</p>
+
+<p>$ curl -sSL <a href="https://get.rvm.io">get.rvm.io</a> | bash -s stable
+–rails</p>
+</li><li>
+<p>Qt:</p>
+
+<p>$ brew install qt Needed for gem &#39;capybara-webkit&#39;</p>
+</li><li>
+<p>Install Postgresql:</p>
+
+<pre>$ brew install postgresql
+$ brew info postgresql
+
+$ ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
+$ launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+
+$ initdb /usr/local/var/postgres -E utf8
+  The files belonging to this database system will be owned by user &quot;doug&quot;.
+  This user must also own the server process.
+
+  Alter &#39;config/database.yml&#39; &#39;username: postgres&#39; to &#39;username: doug&#39;</pre>
+</li><li>
+<p>Imagemagick:</p>
+
+<pre>$ brew update
+$ brew install imagemagick</pre>
+</li><li>
+<p>Firefox</p>
+
+<p>Add-ons:</p>
+
+<pre class="ruby"><span class="ruby-constant">SQLite</span> <span class="ruby-constant">Manager</span>
+</pre>
+</li><li>
+<p>Perian</p>
+
+<p><a href="http://www.perian.org">www.perian.org</a>/</p>
+</li><li>
+<p>WireTap Pro</p>
+
+<p>If accidentally press “Register…” button and delete KEXT (Kernel Extension)
+then:</p>
+<ul><li>
+<p>Install and uninstall <a
+href="http://downloads.ambrosiasw.com/snapzprox/essentials/SnapzProX2.3.3.dmg">downloads.ambrosiasw.com/snapzprox/essentials/SnapzProX2.3.3.dmg</a>
+whilst leaving KEXT</p>
+
+<p>(<a
+href="http://forums.macrumors.com/threads/wiretap-pro-alternative-for-snow-leopard.1532877">forums.macrumors.com/threads/wiretap-pro-alternative-for-snow-leopard.1532877</a>/)</p>
+</li><li>
+<p>File, Record From: Mac Audio</p>
+
+<pre>(Otherwise get trial voice-over for Microphone/Line In)</pre>
+</li></ul>
+
+<p>Also be aware that WireTap Pro uninstaller leaves &#39;Music/WireTap Pro
+Recordings&#39; (that may be used to check prior install)</p>
+</li><li>
+<p>Additional items:</p>
+
+<pre>$ brew install wget</pre>
+</li></ul>
 
 <h1 id="label-1+-+Eject+stuck+DVD">1 - Eject stuck DVD<span><a href="#label-1+-+Eject+stuck+DVD">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
@@ -172,13 +277,65 @@ LEOPARD]</p>
 <p>eg:</p>
 
 <p>$ pushd $(dirname $(which rails));</p>
+
+<h1 id="label-7+-+Share+files+with+linux">7 - Share files with linux<span><a href="#label-7+-+Share+files+with+linux">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>(15/5/16)</p>
+<ul><li>
+<p>Make directory read-write by all</p>
+
+<p>$ chmod -R 777 src</p>
+
+<p>$ chmod -R 755 Documents</p>
+</li><li>
+<p>Disable Journalling</p>
+
+<p>Disk utility-Select partition-Alt+File menu-Disable Journaling</p>
+</li><li>
+<p>Reboot into linux</p>
+</li><li>
+<p>Reenable Journalling when reboot OSX</p>
+</li><li>
+<p>Make linux files accessible from osx</p>
+
+<p>$ sudo chmod -R 777 src</p>
+</li></ul>
+
+<h1 id="label-8+-+Booting+MacBook+5.1+into+64-bit+mode">8 - Booting MacBook 5.1 into 64-bit mode<span><a href="#label-8+-+Booting+MacBook+5.1+into+64-bit+mode">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>(21/5/16)</p>
+
+<p>Check whether EFI can boot 64-bit kernel:</p>
+
+<pre>$ ioreg -l -p IODeviceTree | grep firmware-abi
+  | |   &quot;firmware-abi&quot; = &lt;&quot;EFI64&quot;&gt;</pre>
+
+<p>Only MacBook “Pro” supports ability to boot 64-bit kernel with 64-bit EFI</p>
+
+<p><a
+href="http://macperformanceguide.com/SnowLeopard-64bit.html">macperformanceguide.com/SnowLeopard-64bit.html</a></p>
+
+<p><a
+href="http://forums.macrumors.com/threads/64-bit-kernel-macbook-5-1.1184959">forums.macrumors.com/threads/64-bit-kernel-macbook-5-1.1184959</a>/</p>
+
+<pre>http://dl.dropbox.com/u/35856129/x64patch-10.6.8.tar.bz2
+
+$ cd ~/Downloads/x64patch-10.6.8 ; more readme.txt</pre>
+
+<p>System Software Overview:</p>
+
+<pre>64-bit Kernel and Extensions: Yes</pre>
+
+<p>Holding down 3 + 2 until Apple appears gives:</p>
+
+<pre>64-bit Kernel and Extensions: No</pre>
 </main>
 
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.2.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 
